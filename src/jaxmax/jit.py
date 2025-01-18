@@ -32,10 +32,17 @@ class JITFunction:
             compiled, _ = global_jit_engine.cache[(self.f, jit_key)]
             return compiled(*args)
         else:
+            # Static tracing to generate a graph.
             defout, graph = _max(self.f)(*args)
             model = global_jit_engine.load(graph)
+
+            # Generate a function which executes the graph using 
+            # the model stored in the session.
             def _compiled(*args):
-                return jtu.tree_unflatten(defout, model.execute(*args))
+                flat_args = jtu.tree_leaves(args)
+                return jtu.tree_unflatten(defout, model.execute(*flat_args))
+            
+            # Store the function.
             global_jit_engine[(self.f, jit_key)] = (_compiled, graph)
             return _compiled(*args)
 

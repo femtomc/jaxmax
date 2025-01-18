@@ -97,6 +97,8 @@ timing(jax_code)(5, 10) # 0.131628 s
 timing(jax_code)(5, 10) # 0.000175 s 
 ```
 
+The idea here is simple: a global MAX inference session is kept, and models are created and stored in a cache and fetched according to keys of the form `(hashable_callable, static_pytree_structure)`.
+
 > [!WARNING]
 > This is not nearly as featured as `jax.jit`. Indeed, some things you _cannot_ do with this now:
 > * Invoke a `jaxmax.jit` function inside of code which you want to lower to MAX.
