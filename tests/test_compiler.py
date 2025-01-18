@@ -5,6 +5,7 @@ import pytest
 
 from jaxmax import max
 
+
 # This is a convenience function designed to support equality
 # comparison between executing a function using JAX's JIT
 # and executing a function using MX compile.
@@ -15,9 +16,7 @@ def jax_equality_assertion(fn, *args):
         else:
             return v
 
-    assert check(
-        pytest.approx(jax.jit(fn)(*args), 1e-5) == max(fn)(*args)
-    )
+    assert check(pytest.approx(jax.jit(fn)(*args), 1e-5) == max(fn)(*args))
 
 
 def tire_kick_assertion(fn, *args):

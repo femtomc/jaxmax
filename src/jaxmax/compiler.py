@@ -20,6 +20,7 @@ VarOrLiteral = jc.Var | jc.Literal
 Callable = btyping.Callable
 WrappedFunWithAux = tuple[lu.WrappedFun, Callable[[], Any]]
 
+
 def get_shaped_aval(x):
     return jc.raise_to_shaped(jc.get_aval(x))
 
@@ -127,8 +128,10 @@ def tensor_type(x):
     x = jnp.array(x, copy=False)
     return TensorType(max_types[x.dtype], x.shape)
 
+
 def tensor_value(x):
     return TensorValue(tensor_type(x), x)
+
 
 @dataclass
 class MAXInterpreter:
@@ -157,7 +160,7 @@ class MAXInterpreter:
                 jax_util.safe_map(env.write, eqn.outvars, outvals)
 
             graph.output(*jax_util.safe_map(env.read, _jaxpr.outvars))
-        
+
         return graph
 
     def run_interpreter(self, fn, *args, **kwargs):
@@ -183,6 +186,7 @@ def _max(f: Callable[..., Any]):
 
     return wrapped
 
+
 def max_graph(f: Callable[..., Any]):
     @functools.wraps(f)
     def wrapped(*args):
@@ -190,6 +194,7 @@ def max_graph(f: Callable[..., Any]):
         return graph
 
     return wrapped
+
 
 def max(f: Callable[..., Any]):
     @functools.wraps(f)

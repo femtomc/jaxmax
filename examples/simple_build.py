@@ -4,12 +4,11 @@ from max.dtype import DType
 from max.graph import Graph, TensorType, ops
 from typing import Any
 
+
 def add_tensors(a: np.ndarray, b: np.ndarray) -> dict[str, Any]:
     # 1. Build the graph
     input_type = TensorType(dtype=DType.float32, shape=(1,))
-    with Graph(
-        "simple_add_graph", input_types=(input_type, input_type)
-    ) as graph:
+    with Graph("simple_add_graph", input_types=(input_type, input_type)) as graph:
         lhs, rhs = graph.inputs
         print(lhs, rhs)
         out = ops.add(lhs, rhs)

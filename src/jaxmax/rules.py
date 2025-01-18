@@ -12,9 +12,10 @@ import numpy as np
 Callable = btyping.Callable
 
 max_types = {
-    np.dtype(np.int32) : DType.int32,
-    np.dtype(np.float32) : DType.float32,
+    np.dtype(np.int32): DType.int32,
+    np.dtype(np.float32): DType.float32,
 }
+
 
 @dataclass
 class Ruleset:
@@ -45,6 +46,7 @@ max_rules.register(lax.add_p, ops.add)
 max_rules.register(lax.mul_p, ops.mul)
 max_rules.register(lax.sub_p, ops.sub)
 max_rules.register(lax.sin_p, ops.sin)
+
 
 @max_rules.register_def(lax.convert_element_type_p)
 def convert_element_type(x, **params):
