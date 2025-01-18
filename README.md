@@ -37,7 +37,7 @@ def jax_code(x, y):
     v = v * v
     return jnp.sin(v)
 
-print(jax_code(5, 10)) # -0.93009484
+print(jax_code(5, 10)) 
 ```
 
 produces a textual object which looks like the following:
