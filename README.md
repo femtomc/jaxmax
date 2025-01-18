@@ -57,7 +57,19 @@ This is a MAX graph, an intermediate representation which can be fed to [MAX's e
 
 ## Composition with JAX transformations
 
-Our approach is fully compositional with JAX transformations, meaning one can apply `jax.vmap` and `jax.grad` _before_ lowering the resulting computation to a MAX graph.
+Our approach is fully compositional with JAX transformations, meaning one can apply transformations like `jax.vmap` and `jax.grad` _before_ lowering the resulting computation to a MAX graph.
+
+```python
+@max
+@grad
+def jax_code(x, y):
+    v = x + y
+    v = v * v
+    return jnp.sin(v)
+
+
+print(jax_code(5.0, 10.0).to_numpy()) # 11.019581
+```
 
 ## State of coverage of JAX primitives
 
