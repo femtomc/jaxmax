@@ -63,6 +63,10 @@ This is a MAX graph, an intermediate representation which can be fed to [MAX's e
 Our approach is fully compositional with JAX transformations, meaning one can apply transformations like `jax.vmap` and `jax.grad` _before_ lowering the resulting computation to a MAX graph.
 
 ```python
+from jax import grad
+import jax.numpy as jnp
+from jaxmax import max
+
 @max
 @grad
 def jax_code(x, y):
@@ -76,7 +80,22 @@ print(jax_code(5.0, 10.0).to_numpy()) # 11.019581
 
 ## JIT functionality
 
-This package contains a very simple implementation of JIT functionality
+This package contains a very simple implementation of JIT functionality based on a JIT cache using [static Pytree structure](https://jax.readthedocs.io/en/latest/pytrees.html):
+
+```python
+from jax import grad
+import jax.numpy as jnp
+from jaxmax import jit
+
+@jit
+def jax_code(x, y):
+    v = x + y
+    v = v * v
+    return jnp.sin(v)
+
+timing(jax_code)(5, 10) # 0.131628 s
+timing(jax_code)(5, 10) # 0.000175 s 
+```
 
 ## State of coverage of JAX primitives
 
