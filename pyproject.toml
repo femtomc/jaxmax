@@ -23,3 +23,4 @@ jaxmax = { path = ".", editable = true }
 max = "~=24.6"
 beartype = ">=0.19.0,<0.20"
 jax = ">=0.4.35,<0.5"
+pytest = ">=8.3.4,<9"

@@ -3,12 +3,12 @@ import jax.numpy as jnp
 import jax.tree_util as jtu
 import pytest
 
-from jaxmax import mlax
+from jaxmax import max
 
 # This is a convenience function designed to support equality
 # comparison between executing a function using JAX's JIT
 # and executing a function using MX compile.
-def jax_equality_assertion(prim_fn, *args):
+def jax_equality_assertion(fn, *args):
     def check(v):
         if not isinstance(v, bool) and v.shape:
             return all(v)
@@ -16,7 +16,7 @@ def jax_equality_assertion(prim_fn, *args):
             return v
 
     assert check(
-        pytest.approx(jax.jit(prim_fn)(*args), 1e-5) == max(fn)(*args)
+        pytest.approx(jax.jit(fn)(*args), 1e-5) == max(fn)(*args)
     )
 
 

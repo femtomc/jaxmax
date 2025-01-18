@@ -1099,7 +1099,7 @@ packages:
 - pypi: .
   name: jaxmax
   version: 0.1.0
-  sha256: e8477204c2194d318cf8ea0b57eaf3b0f54a28b28f66c0d32987e033811b430e
+  sha256: 0b0487d677d0c883d4e57e75a01345d13f0b9e36f52f1f04616fb34d2f69318c
   requires_python: '>=3.11'
   editable: true
 - conda: https://conda.anaconda.org/conda-forge/noarch/jinja2-3.1.5-pyhd8ed1ab_0.conda
