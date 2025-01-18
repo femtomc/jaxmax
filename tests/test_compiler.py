@@ -25,3 +25,6 @@ def tire_kick_assertion(fn, *args):
 class TestCompiler:
     def test_add_p(self):
         jax_equality_assertion(lambda x, y: x + y, 5.0, 5.0)
+
+    def test_neg_p(self):
+        jax_equality_assertion(lambda x: -x, 5.0)
