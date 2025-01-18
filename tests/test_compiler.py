@@ -1,5 +1,6 @@
 import jax
 import jax.numpy as jnp
+from jax import grad
 import pytest
 
 from jaxmax import max
@@ -28,3 +29,12 @@ class TestCompiler:
 
     def test_neg_p(self):
         jax_equality_assertion(lambda x: -x, 5.0)
+
+    def test_grad(self):
+        @grad
+        def jax_code(x, y):
+            v = x + y
+            v = v * v
+            return jnp.sin(v)
+        
+        jax_equality_assertion(jax_code, 5.0, 10.0)

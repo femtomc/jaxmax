@@ -6,6 +6,7 @@ import numpy as np
 from jax import lax
 from max.dtype import DType
 from max.graph import TensorType, ops
+from jax._src import ad_util 
 
 Callable = btyping.Callable
 
@@ -50,6 +51,10 @@ max_rules.register(lax.abs_p, ops.abs)
 @max_rules.register_def(lax.neg_p)
 def neg(x, **params):
     return ops.mul(x, -1)
+
+@max_rules.register_def(ad_util.add_any_p)
+def add_any(x, y, **params):
+    return ops.add(x, y)
 
 
 @max_rules.register_def(lax.convert_element_type_p)

@@ -55,6 +55,10 @@ mo.graph @jax_code(%arg0: !mo.tensor<[], si32>, %arg1: !mo.tensor<[], si32>) -> 
 
 This is a MAX graph, an intermediate representation which can be fed to [MAX's execution engine](https://docs.modular.com/max/api/mojo/engine/) to perform computations.
 
+## Composition with JAX transformations
+
+Our approach is fully compositional with JAX transformations, meaning one can apply `jax.vmap` and `jax.grad` _before_ lowering the resulting computation to a MAX graph.
+
 ## State of coverage of JAX primitives
 
 Keep in mind, even if a primitive is supported by a test, there may be missing usage patterns which cause errors which we haven't covered yet.
@@ -62,4 +66,7 @@ Keep in mind, even if a primitive is supported by a test, there may be missing u
 - [X] `lax.add_p`
 - [X] `lax.mul_p`
 - [X] `lax.sin_p`
+- [X] `lax.cos_p`
+- [X] `lax.neg_p`
+- [X] `lax.abs_p`
 - [X] `lax.convert_element_type_p`
