@@ -1,7 +1,7 @@
 [project]
-authors = [{ name = "femtomc", email = "mccoybecker@gmail.com" }]
+authors = [{ name = "McCoy Reynolds Becker", email = "mccoyb@mit.edu" }]
 dependencies = []
-description = "Add a short description here"
+description = "Lowering JAX computations to MAX graphs."
 name = "jaxmax"
 requires-python = ">=3.11"
 version = "0.1.0"
