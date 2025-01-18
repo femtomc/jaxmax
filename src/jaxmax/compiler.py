@@ -13,7 +13,7 @@ from max import engine
 from max.dtype import DType
 import numpy as np
 from max.graph import Graph, TensorType, ops, TensorValue
-from jaxmax.rules import max_rules
+from jaxmax.rules import max_rules, max_types
 
 Any = btyping.Any
 VarOrLiteral = jc.Var | jc.Literal
@@ -120,14 +120,11 @@ class Environment:
         keys = list(self.env.keys())
         return Environment({k: self.env[k] for k in keys})
 
-max_types = {
-    np.dtype(np.int32) : DType.int32,
-    np.dtype(np.float32) : DType.float32,
-}
 
 def tensor_type(x):
     if isinstance(x, TensorType) or isinstance(x, TensorValue):
         return x
+    x = jnp.array(x, copy=False)
     return TensorType(max_types[x.dtype], x.shape)
 
 def tensor_value(x):
@@ -178,7 +175,7 @@ class MAXInterpreter:
         return out_tree(), graph_out
 
 
-def max_graph(f: Callable[..., Any]):
+def _max(f: Callable[..., Any]):
     @functools.wraps(f)
     def wrapped(*args):
         interpreter = MAXInterpreter()
@@ -186,10 +183,18 @@ def max_graph(f: Callable[..., Any]):
 
     return wrapped
 
+def max_graph(f: Callable[..., Any]):
+    @functools.wraps(f)
+    def wrapped(*args):
+        defout, graph = _max(f)(*args)
+        return graph
+
+    return wrapped
+
 def max(f: Callable[..., Any]):
     @functools.wraps(f)
     def wrapped(*args):
-        defout, graph = max_graph(f)(*args)
+        defout, graph = _max(f)(*args)
         session = engine.InferenceSession()
         model = session.load(graph)
         ret = model.execute(*args)

@@ -8,6 +8,6 @@ conf = BeartypeConf(
     violation_type=TypeError,
 )
 
-from .compiler import max
+from .compiler import max, max_graph
 
-__all__ = ["max"]
+__all__ = ["max", "max_graph"]
