@@ -167,7 +167,7 @@ class MAXInterpreter:
         _closed_jaxpr, (flat_args, _, out_tree) = stage(_inner)(*args)
         _jaxpr, consts = _closed_jaxpr.jaxpr, _closed_jaxpr.literals
         graph_out = self._eval_jaxpr_max(
-            "lambda",
+            fn.__qualname__,
             _jaxpr,
             consts,
             flat_args,
