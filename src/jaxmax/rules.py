@@ -34,6 +34,6 @@ max_rules = Ruleset()
 # Registered rules #
 ####################
 
-@max_rules.register_def(lax.add_p)
-def add(x: TensorType, y: TensorType) -> TensorType:
-    return ops.add(x, y)
+max_rules.register(lax.add_p, ops.add)
+max_rules.register(lax.mul_p, ops.mul)
+max_rules.register(lax.sub_p, ops.sub)
