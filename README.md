@@ -21,6 +21,8 @@ print(jax_code(5, 10).to_numpy()) # -0.93009484
 
 The way this API works is that the computation is first staged to a `Jaxpr`, and then an interpreter is run. The interpreter traverses the `Jaxpr`, and replaces JAX primitives (like `jax.lax.add_p`) with ones from [MAX's operation set](https://docs.modular.com/max/api/mojo/graph/ops/).
 
+In theory, one could define the JIT-like functionality that we've all come to know and love from JAX, using MAX as a backend in place of XLA.
+
 ## MAX graphs
 
 What is a MAX graph? Let's inspect one:
