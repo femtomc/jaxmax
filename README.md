@@ -82,3 +82,4 @@ Keep in mind, even if a primitive is supported by a test, there may be missing u
 - [X] `lax.neg_p`
 - [X] `lax.abs_p`
 - [X] `lax.convert_element_type_p`
+- [X] `ad_util.add_any_p`
