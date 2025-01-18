@@ -23,7 +23,7 @@ The way this API works is that the computation is first staged to a `Jaxpr`, and
 
 ## State of coverage of JAX primitives
 
-Keep in mind, even if a primitive is supported by a test, there may be missing usages.
+Keep in mind, even if a primitive is supported by a test, there may be missing usage patterns which cause errors which we haven't covered yet.
 
 - [X] `lax.add_p`
 - [X] `lax.mul_p`
