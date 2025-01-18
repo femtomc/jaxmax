@@ -1,6 +1,5 @@
 import jax
 import jax.numpy as jnp
-import jax.tree_util as jtu
 import pytest
 
 from jaxmax import max

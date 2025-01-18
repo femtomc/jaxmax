@@ -1,4 +1,5 @@
 import jax.numpy as jnp
+
 from jaxmax import max, max_graph
 
 

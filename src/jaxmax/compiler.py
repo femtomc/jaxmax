@@ -10,9 +10,8 @@ from jax.extend import linear_util as lu
 from jax.interpreters import partial_eval as pe
 from jax.util import safe_map
 from max import engine
-from max.dtype import DType
-import numpy as np
-from max.graph import Graph, TensorType, ops, TensorValue
+from max.graph import Graph, TensorType, TensorValue
+
 from jaxmax.rules import max_rules, max_types
 
 Any = btyping.Any

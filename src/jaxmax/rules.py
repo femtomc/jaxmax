@@ -2,12 +2,10 @@ from dataclasses import dataclass, field
 
 import beartype.typing as btyping
 import jax.core as jc
-from jax import lax
-from jax._src import ad_util, prng
-from max.graph import Graph, TensorType, ops
-from max.dtype import DType
-
 import numpy as np
+from jax import lax
+from max.dtype import DType
+from max.graph import TensorType, ops
 
 Callable = btyping.Callable
 

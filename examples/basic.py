@@ -1,5 +1,6 @@
-from jaxmax import max
 import jax.numpy as jnp
+
+from jaxmax import max
 
 
 @max
