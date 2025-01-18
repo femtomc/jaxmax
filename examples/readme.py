@@ -23,6 +23,7 @@ def jax_code(x, y):
 
 print(jax_code(5, 10))
 
+
 @max
 @grad
 def jax_code(x, y):

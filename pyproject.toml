@@ -22,6 +22,7 @@ platforms = ["osx-arm64"]
 jaxmax = { path = ".", editable = true }
 
 [tool.pixi.tasks]
+kernels = "mojo package ./src/jaxmax/kernels -o kernels.mojopkg"
 
 [tool.pixi.dependencies]
 max = ">=24.6.0.dev2024090905,<25"

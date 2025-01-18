@@ -10,6 +10,7 @@ from jax.extend import linear_util as lu
 from jax.interpreters import partial_eval as pe
 from jax.util import safe_map
 from max import engine
+from max.driver import CPU
 from max.graph import Graph, TensorType, TensorValue
 
 from jaxmax.rules import max_rules, max_types
@@ -189,17 +190,24 @@ def _max(f: Callable[..., Any]):
 def max_graph(f: Callable[..., Any]):
     @functools.wraps(f)
     def wrapped(*args):
-        defout, graph = _max(f)(*args)
+        _, graph = _max(f)(*args)
         return graph
 
     return wrapped
 
 
-def max(f: Callable[..., Any]):
+def max(
+    f: Callable[..., Any],
+    device=CPU(),
+    path="kernels.mojopkg",
+):
     @functools.wraps(f)
     def wrapped(*args):
         defout, graph = _max(f)(*args)
-        session = engine.InferenceSession()
+        session = engine.InferenceSession(
+            devices=[device],
+            custom_extensions=path,
+        )
         model = session.load(graph)
         ret = model.execute(*args)
         return jtu.tree_unflatten(defout, ret)

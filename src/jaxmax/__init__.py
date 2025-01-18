@@ -8,6 +8,8 @@ conf = BeartypeConf(
     violation_type=TypeError,
 )
 
+beartype_this_package(conf=conf)
+
 from .compiler import max, max_graph
 from .jit import jit
 

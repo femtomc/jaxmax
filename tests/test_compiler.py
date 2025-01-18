@@ -1,7 +1,7 @@
 import jax
 import jax.numpy as jnp
-from jax import grad
 import pytest
+from jax import grad
 
 from jaxmax import max
 
@@ -36,5 +36,5 @@ class TestCompiler:
             v = x + y
             v = v * v
             return jnp.sin(v)
-        
+
         jax_equality_assertion(jax_code, 5.0, 10.0)

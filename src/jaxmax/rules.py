@@ -4,13 +4,14 @@ import beartype.typing as btyping
 import jax.core as jc
 import numpy as np
 from jax import lax
+from jax._src import ad_util, prng
 from max.dtype import DType
 from max.graph import TensorType, ops
-from jax._src import ad_util 
 
 Callable = btyping.Callable
 
 max_types = {
+    np.dtype(np.uint32): DType.uint32,
     np.dtype(np.int32): DType.int32,
     np.dtype(np.float32): DType.float32,
 }
@@ -48,9 +49,11 @@ max_rules.register(lax.sin_p, ops.sin)
 max_rules.register(lax.cos_p, ops.cos)
 max_rules.register(lax.abs_p, ops.abs)
 
+
 @max_rules.register_def(lax.neg_p)
 def neg(x, **params):
     return ops.mul(x, -1)
+
 
 @max_rules.register_def(ad_util.add_any_p)
 def add_any(x, y, **params):
@@ -60,3 +63,23 @@ def add_any(x, y, **params):
 @max_rules.register_def(lax.convert_element_type_p)
 def convert_element_type(x, **params):
     return ops.cast(x, dtype=max_types[params["new_dtype"]])
+
+
+##############
+# Randomness #
+##############
+
+
+@max_rules.register_def(prng.random_wrap_p)
+def random_wrap(x, **params):
+    return x
+
+
+@max_rules.register_def(prng.random_split_p)
+def random_split(x, **params):
+    return x
+
+
+@max_rules.register_def(prng.random_unwrap_p)
+def random_unwrap(x, **params):
+    return x

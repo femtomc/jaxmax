@@ -34,3 +34,4 @@ scratch
 docs/_build
 site
 /.luarc.json
+kernels.mojopkg
