@@ -27,3 +27,5 @@ Keep in mind, even if a primitive is supported by a test, there may be missing u
 
 - [X] `lax.add_p`
 - [X] `lax.mul_p`
+- [X] `lax.sin_p`
+- [X] `lax.convert_element_type_p`
