@@ -97,6 +97,11 @@ timing(jax_code)(5, 10) # 0.131628 s
 timing(jax_code)(5, 10) # 0.000175 s 
 ```
 
+> [!WARNING]
+> This is not nearly as featured as `jax.jit`. Indeed, some things you _cannot_ do with this now:
+> * Invoke a `jaxmax.jit` function inside of code which you want to lower to MAX.
+> * No keyword arguments to specify static arguments.
+
 ## State of coverage of JAX primitives
 
 Keep in mind, even if a primitive is supported by a test, there may be missing usage patterns which cause errors which we haven't covered yet.
