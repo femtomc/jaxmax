@@ -35,3 +35,8 @@ docs/_build
 site
 /.luarc.json
 kernels.mojopkg
+# pixi environments
+.pixi
+*.egg-info
+# magic environments
+.magic

@@ -154,7 +154,6 @@ class MAXInterpreter:
                 args = subfuns + invals
                 rule = max_rules[eqn.primitive]
                 outvals = rule(*args, **params)
-
                 if not eqn.primitive.multiple_results:
                     outvals = [outvals]
                 jax_util.safe_map(env.write, eqn.outvars, outvals)
@@ -199,7 +198,7 @@ def max_graph(f: Callable[..., Any]):
 def max(
     f: Callable[..., Any],
     device=CPU(),
-    path="kernels.mojopkg",
+    path="./kernels.mojopkg",
 ):
     @functools.wraps(f)
     def wrapped(*args):

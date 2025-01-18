@@ -77,7 +77,12 @@ def random_wrap(x, **params):
 
 @max_rules.register_def(prng.random_split_p)
 def random_split(x, **params):
-    return x
+    ret = ops.custom(
+        name="random_split",
+        values=[x],
+        out_types=[TensorType(dtype=x.dtype, shape=x.tensor.shape)],
+    )
+    return ret[0]
 
 
 @max_rules.register_def(prng.random_unwrap_p)

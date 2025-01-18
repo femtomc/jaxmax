@@ -29,7 +29,7 @@ kernels = "mojo package ./src/jaxmax/kernels -o kernels.mojopkg"
 format = "ruff format . && ruff check --fix"
 
 [tool.pixi.dependencies]
-max = ">=24.6.0.dev2024090905,<25"
+max = ">=25.1.0.dev2025011705,<26"
 
 [tool.ruff]
 exclude = [
