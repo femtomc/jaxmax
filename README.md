@@ -74,6 +74,10 @@ def jax_code(x, y):
 print(jax_code(5.0, 10.0).to_numpy()) # 11.019581
 ```
 
+## JIT functionality
+
+This package contains a very simple implementation of JIT functionality
+
 ## State of coverage of JAX primitives
 
 Keep in mind, even if a primitive is supported by a test, there may be missing usage patterns which cause errors which we haven't covered yet.

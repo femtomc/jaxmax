@@ -9,5 +9,6 @@ conf = BeartypeConf(
 )
 
 from .compiler import max, max_graph
+from .jit import jit
 
-__all__ = ["max", "max_graph"]
+__all__ = ["jit", "max", "max_graph"]
