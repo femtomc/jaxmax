@@ -44,6 +44,7 @@ max_rules.register(lax.add_p, ops.add)
 max_rules.register(lax.mul_p, ops.mul)
 max_rules.register(lax.sub_p, ops.sub)
 max_rules.register(lax.sin_p, ops.sin)
+max_rules.register(lax.abs_p, ops.abs)
 
 
 @max_rules.register_def(lax.convert_element_type_p)
