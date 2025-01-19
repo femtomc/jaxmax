@@ -6,7 +6,7 @@
 </p>
 
 > [!CAUTION]
-> This package is a rather simple and dumb idea, which probably has some sharp edges. Simple programs only for now! It's not yet clear _how much of JAX_ will be fully supported (and, conversely, how many extensions via MAX kernels will be added).
+> This package is a rather simple and dumb idea, which probably has some sharp edges. Simple programs only for now! It's not yet clear _how much of JAX_ will be fully supported (and how many extensions via MAX kernels will be added).
 
 This package supports a API called `max` whose purpose is to transform a _JAX computation_ into a [MAX computation graph](https://docs.modular.com/max). These graphs can then be executed using MAX.
 
