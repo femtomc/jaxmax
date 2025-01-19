@@ -1,5 +1,10 @@
 # juju
 
+<br>
+<p align="center">
+<img width="500px" src="./good_juju.png"/>
+</p>
+
 > [!CAUTION]
 > This package is a rather simple and dumb idea, which probably has some sharp edges. Simple programs only for now!
 
