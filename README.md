@@ -63,6 +63,12 @@ mo.graph @jax_code(%arg0: !mo.tensor<[], si32>, %arg1: !mo.tensor<[], si32>) -> 
 
 This is a MAX graph, an intermediate representation which can be fed to [MAX's execution engine](https://docs.modular.com/max/api/mojo/engine/) to perform computations.
 
+## Getting started
+
+First, [install `magic`](https://docs.modular.com/magic/). Then, run `magic install` in the repository. This will setup your environment, which you can access via `magic shell`. You'll also want to run `magic run kernels` to build the custom MAX kernels provided as part of `juju`.
+
+Inside the shell, you can run the example snippets using `python examples/basic.py` (for instance).
+
 ## Composition with JAX transformations
 
 Our approach is fully compositional with JAX transformations, meaning one can apply transformations like `jax.vmap` and `jax.grad` _before_ lowering the resulting computation to a MAX graph.

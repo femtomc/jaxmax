@@ -126,8 +126,8 @@ class Environment:
 def tensor_type(x):
     if isinstance(x, TensorType) or isinstance(x, TensorValue):
         return x
-    x = jnp.array(x, copy=False)
-    return TensorType(max_types[x.dtype], x.shape)
+    aval = get_shaped_aval(x)
+    return TensorType(max_types[aval.dtype], aval.shape)
 
 
 def tensor_value(x):
