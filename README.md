@@ -33,7 +33,7 @@ In theory, one could define the JIT-like functionality that we've all come to kn
 
 ## Getting started
 
-First, [install `magic`](https://docs.modular.com/magic/). Then, run `magic install` in the repository. This will setup your environment, which you can access via `magic shell`. You'll also want to run `magic run kernels` to build the custom MAX kernels provided as part of `juju`.
+First, [install `magic`](https://docs.modular.com/magic/). Then, clone this repository, and run `magic install` at the toplevel. This will setup your environment, which you can access via `magic shell`. You'll also want to run `magic run kernels` to build the custom MAX kernels provided as part of `juju`.
 
 Inside the shell, you can run the example snippets using `python examples/basic.py` (for instance).
 
