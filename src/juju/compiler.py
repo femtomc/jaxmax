@@ -7,6 +7,7 @@ import jax.numpy as jnp
 import jax.tree_util as jtu
 from jax import util as jax_util
 from jax.extend import linear_util as lu
+from jax.extend.core import ClosedJaxpr, Jaxpr, Literal, Var
 from jax.interpreters import partial_eval as pe
 from jax.util import safe_map
 from max import engine
@@ -16,20 +17,20 @@ from max.graph import Graph, TensorType, TensorValue
 from juju.rules import max_rules, max_types
 
 Any = btyping.Any
-VarOrLiteral = jc.Var | jc.Literal
+VarOrLiteral = Var | Literal
 Callable = btyping.Callable
 WrappedFunWithAux = tuple[lu.WrappedFun, Callable[[], Any]]
 
 
 def get_shaped_aval(x):
-    return jc.raise_to_shaped(jc.get_aval(x))
+    return jc.get_aval(x)
 
 
 # The point of caching here is that, when JAX encounters a function that it needs to convert to a Jaxpr, if it has already done that before, save the work!
 @lu.cache
 def cached_stage_dynamic(flat_fun, in_avals):
     jaxpr, _, consts = pe.trace_to_jaxpr_dynamic(flat_fun, in_avals)
-    typed_jaxpr = jc.ClosedJaxpr(jaxpr, consts)
+    typed_jaxpr = ClosedJaxpr(jaxpr, consts)
     return typed_jaxpr
 
 
@@ -78,7 +79,7 @@ class Environment:
     env: dict[int, Any] = field(default_factory=dict)
 
     def read(self, var: VarOrLiteral) -> Any:
-        if isinstance(var, jc.Literal):
+        if isinstance(var, Literal):
             return var.val
         else:
             v = self.env.get(var.count)
@@ -89,13 +90,13 @@ class Environment:
             return v
 
     def get(self, var: VarOrLiteral) -> Any:
-        if isinstance(var, jc.Literal):
+        if isinstance(var, Literal):
             return tensor_value(var.val)
         else:
             return self.env.get(var.count)
 
     def write(self, var: VarOrLiteral, cell: Any) -> Any:
-        if isinstance(var, jc.Literal):
+        if isinstance(var, Literal):
             return cell
         cur_cell = self.get(var)
         if isinstance(var, jc.DropVar):
@@ -113,7 +114,7 @@ class Environment:
         )
 
     def __contains__(self, var: VarOrLiteral):
-        if isinstance(var, jc.Literal):
+        if isinstance(var, Literal):
             return True
         return var.count in self.env
 
@@ -138,7 +139,7 @@ class MAXInterpreter:
     def _eval_jaxpr_max(
         self,
         name: str,
-        _jaxpr: jc.Jaxpr,
+        _jaxpr: Jaxpr,
         consts: list[Any],
         args: list[Any],
     ):

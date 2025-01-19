@@ -27,6 +27,7 @@ pytest = ">=8.3.4,<9"
 [tool.pixi.tasks]
 kernels = "mojo package ./src/juju/kernels -o kernels.mojopkg"
 format = "ruff format . && ruff check --fix"
+test = "magic run kernels && pytest"
 
 [tool.pixi.dependencies]
 max = ">=25.1.0.dev2025011705,<26"
