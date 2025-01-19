@@ -198,7 +198,7 @@ def _max(f: Callable[..., Any]):
     return wrapped
 
 
-def max_graph(f: Callable[..., Any]):
+def make_max_graph(f: Callable[..., Any]):
     @functools.wraps(f)
     def wrapped(*args):
         _, graph = _max(f)(*args)

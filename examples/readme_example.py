@@ -1,7 +1,7 @@
 import jax.numpy as jnp
 from jax import grad
 
-from juju import max, max_graph
+from juju import max, make_max_graph
 
 
 @max
@@ -14,7 +14,7 @@ def jax_code(x, y):
 print(jax_code(5, 10))
 
 
-@max_graph
+@make_max_graph
 def jax_code(x, y):
     v = x + y
     v = v * v

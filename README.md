@@ -44,9 +44,9 @@ What is a MAX graph? Let's inspect one:
 
 ```python
 import jax.numpy as jnp
-from juju import max_graph
+from juju import make_max_graph
 
-@max_graph
+@make_max_graph
 def jax_code(x, y):
     v = x + y
     v = v * v
