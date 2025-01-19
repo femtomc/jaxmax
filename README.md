@@ -29,7 +29,7 @@ The way this API works is that the computation is first staged to a `Jaxpr`, and
 In theory, one could define the JIT-like functionality that we've all come to know and love from JAX, using MAX as a backend in place of XLA.
 
 > [!WARNING]
-> You can't invoke these graphs _within a JAX computation which you `jax.jit`_ yet. In other words, you can't mix and max XLA and MAX in this package yet.
+> You can't invoke these graphs _within a JAX computation which you `jax.jit`_ yet. In other words, you can't mix and max XLA and MAX in this package yet, and it's not clear if this will ever work.
 
 ## Getting started
 
