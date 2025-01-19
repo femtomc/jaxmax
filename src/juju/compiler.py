@@ -7,12 +7,12 @@ import jax.numpy as jnp
 import jax.tree_util as jtu
 from jax import util as jax_util
 from jax.extend import linear_util as lu
-from jax.extend.core import ClosedJaxpr, Jaxpr, Literal, Var
+from jax.extend.core import ClosedJaxpr, Jaxpr, Literal, Var, Primitive
 from jax.interpreters import partial_eval as pe
 from jax.util import safe_map
 from max import engine
 from max.driver import CPU
-from max.graph import Graph, TensorType, TensorValue
+from max.graph import Graph, TensorType, TensorValue, ops
 
 from juju.rules import max_rules, max_types
 
@@ -91,7 +91,7 @@ class Environment:
 
     def get(self, var: VarOrLiteral) -> Any:
         if isinstance(var, Literal):
-            return tensor_value(var.val)
+            return var.val
         else:
             return self.env.get(var.count)
 
@@ -131,7 +131,14 @@ def tensor_type(x):
 
 
 def tensor_value(x):
-    return TensorValue(tensor_type(x), x)
+    if isinstance(x, TensorValue) or isinstance(x, TensorType):
+        return x
+    aval = get_shaped_aval(x)
+    return ops.constant(x, dtype=max_types[aval.dtype])
+
+
+class InterpreterException(Exception):
+    prim: Primitive
 
 
 @dataclass
@@ -154,7 +161,11 @@ class MAXInterpreter:
                 subfuns, params = eqn.primitive.get_bind_params(eqn.params)
                 args = subfuns + invals
                 rule = max_rules[eqn.primitive]
-                outvals = rule(*args, **params)
+                args = jax_util.safe_map(tensor_value, args)
+                try:
+                    outvals = rule(*args, **params)
+                except Exception as e:
+                    raise InterpreterException(eqn.primitive)
                 if not eqn.primitive.multiple_results:
                     outvals = [outvals]
                 jax_util.safe_map(env.write, eqn.outvars, outvals)

@@ -55,6 +55,11 @@ max_rules.register(primitives.log_p, ops.log)
 max_rules.register(primitives.floor_p, ops.floor)
 
 
+@max_rules.register_def(primitives.div_p)
+def div(x, y, **params):
+    return ops.div(x, y)
+
+
 @max_rules.register_def(primitives.integer_pow_p)
 def integer_pow(x, y, **params):
     return ops.pow(x, y)
@@ -68,6 +73,11 @@ def reduce_sum(x, **params):
         out_types=[TensorType(dtype=x.dtype, shape=x.tensor.shape)],
     )
     return ret[0]
+
+
+@max_rules.register_def(primitives.broadcast_in_dim_p)
+def broadcast_in_dim(x, **params):
+    assert False, "broadcast_in_dim not implemented"
 
 
 @max_rules.register_def(primitives.neg_p)

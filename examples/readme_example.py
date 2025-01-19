@@ -11,7 +11,7 @@ def jax_code(x, y):
     return jnp.sin(v)
 
 
-print(jax_code(5, 10).to_numpy())
+print(jax_code(5, 10))
 
 
 @max_graph
@@ -32,4 +32,4 @@ def jax_code(x, y):
     return jnp.sin(v)
 
 
-print(jax_code(5.0, 10.0).to_numpy())
+print(jax_code(5.0, 10.0))
