@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-
+import jax.numpy as jnp
 import jax.tree_util as jtu
 from beartype.typing import Callable
 from max import engine
@@ -46,7 +46,9 @@ class JITFunction:
             # the model stored in the session.
             def _compiled(*args):
                 flat_args = jtu.tree_leaves(args)
-                return jtu.tree_unflatten(defout, model.execute(*flat_args))
+                return jtu.tree_unflatten(
+                    defout, jtu.tree_map(jnp.from_dlpack, model.execute(*flat_args))
+                )
 
             # Store the function.
             global_jit_engine[self.f, jit_key] = (_compiled, graph)

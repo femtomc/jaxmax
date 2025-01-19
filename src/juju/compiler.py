@@ -210,6 +210,6 @@ def max(
         )
         model = session.load(graph)
         ret = model.execute(*args)
-        return jtu.tree_unflatten(defout, ret)
+        return jtu.tree_unflatten(defout, jtu.tree_map(jnp.from_dlpack, ret))
 
     return wrapped

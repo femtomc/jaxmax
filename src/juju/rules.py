@@ -55,6 +55,21 @@ max_rules.register(primitives.log_p, ops.log)
 max_rules.register(primitives.floor_p, ops.floor)
 
 
+@max_rules.register_def(primitives.integer_pow_p)
+def integer_pow(x, y, **params):
+    return ops.pow(x, y)
+
+
+@max_rules.register_def(primitives.reduce_sum_p)
+def reduce_sum(x, **params):
+    ret = ops.custom(
+        name="reduce_sum",
+        values=[x],
+        out_types=[TensorType(dtype=x.dtype, shape=x.tensor.shape)],
+    )
+    return ret[0]
+
+
 @max_rules.register_def(primitives.neg_p)
 def neg(x, **params):
     return ops.mul(x, -1)
