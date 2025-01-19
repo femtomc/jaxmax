@@ -32,7 +32,7 @@ max = ">=25.1.0.dev2025011705,<26"
 test = "magic run kernels && pytest"
 
 [tool.pixi.feature.format.tasks]
-format = "ruff format ."
+format = "ruff format . && mojo format ."
 
 [tool.pixi.environments]
 test = { features = ["test"], solve-group = "default" }

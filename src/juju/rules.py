@@ -2,9 +2,9 @@ from dataclasses import dataclass, field
 
 import beartype.typing as btyping
 import numpy as np
-from jax import lax
 from jax._src import ad_util, prng
 from jax.extend.core import Primitive
+from jax.extend.core import primitives
 from max.dtype import DType
 from max.graph import TensorType, ops
 
@@ -42,15 +42,15 @@ max_rules = Ruleset()
 # Registered rules #
 ####################
 
-max_rules.register(lax.add_p, ops.add)
-max_rules.register(lax.mul_p, ops.mul)
-max_rules.register(lax.sub_p, ops.sub)
-max_rules.register(lax.sin_p, ops.sin)
-max_rules.register(lax.cos_p, ops.cos)
-max_rules.register(lax.abs_p, ops.abs)
+max_rules.register(primitives.add_p, ops.add)
+max_rules.register(primitives.mul_p, ops.mul)
+max_rules.register(primitives.sub_p, ops.sub)
+max_rules.register(primitives.sin_p, ops.sin)
+max_rules.register(primitives.cos_p, ops.cos)
+max_rules.register(primitives.abs_p, ops.abs)
 
 
-@max_rules.register_def(lax.neg_p)
+@max_rules.register_def(primitives.neg_p)
 def neg(x, **params):
     return ops.mul(x, -1)
 
@@ -60,7 +60,7 @@ def add_any(x, y, **params):
     return ops.add(x, y)
 
 
-@max_rules.register_def(lax.convert_element_type_p)
+@max_rules.register_def(primitives.convert_element_type_p)
 def convert_element_type(x, **params):
     return ops.cast(x, dtype=max_types[params["new_dtype"]])
 
@@ -69,11 +69,15 @@ def convert_element_type(x, **params):
 # Randomness #
 ##############
 
-
+# These are primitives which JAX may eventually deprecate,
+# and deal with conversion from custom key types to uint32 and back.
 @max_rules.register_def(prng.random_wrap_p)
 def random_wrap(x, **params):
     return x
 
+@max_rules.register_def(prng.random_unwrap_p)
+def random_unwrap(x, **params):
+    return x
 
 @max_rules.register_def(prng.random_split_p)
 def random_split(x, **params):
@@ -83,8 +87,3 @@ def random_split(x, **params):
         out_types=[TensorType(dtype=x.dtype, shape=x.tensor.shape)],
     )
     return ret[0]
-
-
-@max_rules.register_def(prng.random_unwrap_p)
-def random_unwrap(x, **params):
-    return x
