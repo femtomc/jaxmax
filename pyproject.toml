@@ -1,6 +1,5 @@
 [project]
 authors = [{ name = "McCoy Reynolds Becker", email = "mccoyb@mit.edu" }]
-dependencies = []
 description = "Lowering JAX computations to MAX graphs."
 name = "juju"
 requires-python = ">=3.11"
