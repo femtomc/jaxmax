@@ -7,7 +7,7 @@ import jax.numpy as jnp
 import jax.tree_util as jtu
 from jax import util as jax_util
 from jax.extend import linear_util as lu
-from jax.extend.core import ClosedJaxpr, Jaxpr, Literal, Var, Primitive
+from jax.extend.core import ClosedJaxpr, Jaxpr, Literal, Primitive, Var
 from jax.interpreters import partial_eval as pe
 from jax.util import safe_map
 from max import engine
@@ -164,7 +164,7 @@ class MAXInterpreter:
                 args = jax_util.safe_map(tensor_value, args)
                 try:
                     outvals = rule(*args, **params)
-                except Exception as e:
+                except Exception:
                     raise InterpreterException(eqn.primitive)
                 if not eqn.primitive.multiple_results:
                     outvals = [outvals]

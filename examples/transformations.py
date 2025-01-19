@@ -1,6 +1,7 @@
-from juju import jit
-from jax import grad, vmap, make_jaxpr
 import jax.numpy as jnp
+from jax import vmap
+
+from juju import jit
 
 
 def f(x):

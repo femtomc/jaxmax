@@ -116,6 +116,10 @@ The idea here is simple: a global MAX inference session is kept, and models are 
 > * Invoke a `juju.jit` function inside of code which you want to lower to MAX.
 > * No keyword arguments to specify static arguments.
 
+## Extending `juju` with custom MAX operations
+
+[MAX supports a user-extensible operation set](https://docs.modular.com/nightly/max/tutorials/build-custom-ops/), and `juju` allows you to convenient plug these operations into JAX computations which you intend to lower to MAX.
+
 ## State of coverage of JAX primitives
 
 Keep in mind, even if a primitive is supported by a test, there may be missing usage patterns which cause errors which we haven't covered yet.

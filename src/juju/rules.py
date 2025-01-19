@@ -3,8 +3,7 @@ from dataclasses import dataclass, field
 import beartype.typing as btyping
 import numpy as np
 from jax._src import ad_util, prng
-from jax.extend.core import Primitive
-from jax.extend.core import primitives
+from jax.extend.core import Primitive, primitives
 from max.dtype import DType
 from max.graph import TensorType, ops
 

@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+
 import jax.numpy as jnp
 import jax.tree_util as jtu
 from beartype.typing import Callable
