@@ -13,9 +13,9 @@ This package is a compiler from [JAX](https://github.com/jax-ml/jax) to [MAX](ht
 **Example:**
 ```python
 import jax.numpy as jnp
-from juju import max
+from juju import max_execute
 
-@max
+@max_execute
 def jax_code(x, y):
     v = x + y
     v = v * v
@@ -77,9 +77,9 @@ Our approach is fully compositional with JAX transformations, meaning one can ap
 ```python
 from jax import grad
 import jax.numpy as jnp
-from juju import max
+from juju import max_execute
 
-@max
+@max_execute
 @grad
 def jax_code(x, y):
     v = x + y
