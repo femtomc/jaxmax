@@ -8,7 +8,7 @@
 > [!CAUTION]
 > This package is a proof-of-concept, and likely has sharp edges. Simple programs only for now! It's not yet clear _how much of JAX_ will be fully supported (and how many extensions via MAX kernels will be added).
 
-This package supports an API called `max` whose purpose is to transform a _JAX computation_ into a [MAX computation graph](https://docs.modular.com/max). These graphs can then be executed using MAX.
+This package is a compiler from [JAX](https://github.com/jax-ml/jax) to [MAX](https://www.modular.com/max). It supports functionality which is designed to transform _JAX computation_ into a [MAX computation graph](https://docs.modular.com/max). These graphs can then be executed using MAX.
 
 **Example:**
 ```python
