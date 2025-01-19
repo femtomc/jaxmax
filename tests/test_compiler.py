@@ -3,7 +3,7 @@ import jax.numpy as jnp
 import pytest
 from jax import grad
 
-from jaxmax import max
+from juju import max
 
 
 # This is a convenience function designed to support equality

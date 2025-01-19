@@ -1,4 +1,4 @@
-# jaxmax
+# juju
 
 > [!CAUTION]
 > This package is a rather simple and dumb idea, which probably has some sharp edges. Simple programs only for now!
@@ -8,7 +8,7 @@ This package supports a API called `max` whose purpose is to transform a _JAX co
 **Example:**
 ```python
 import jax.numpy as jnp
-from jaxmax import max
+from juju import max
 
 @max
 def jax_code(x, y):
@@ -32,7 +32,7 @@ What is a MAX graph? Let's inspect one:
 
 ```python
 import jax.numpy as jnp
-from jaxmax import max_graph
+from juju import max_graph
 
 @max_graph
 def jax_code(x, y):
@@ -65,7 +65,7 @@ Our approach is fully compositional with JAX transformations, meaning one can ap
 ```python
 from jax import grad
 import jax.numpy as jnp
-from jaxmax import max
+from juju import max
 
 @max
 @grad
@@ -85,7 +85,7 @@ This package contains a very simple implementation of JIT functionality based on
 ```python
 from jax import grad
 import jax.numpy as jnp
-from jaxmax import jit
+from juju import jit
 
 @jit
 def jax_code(x, y):
@@ -101,7 +101,7 @@ The idea here is simple: a global MAX inference session is kept, and models are 
 
 > [!WARNING]
 > This is not nearly as featured as `jax.jit`. Indeed, some things you _cannot_ do with this now:
-> * Invoke a `jaxmax.jit` function inside of code which you want to lower to MAX.
+> * Invoke a `juju.jit` function inside of code which you want to lower to MAX.
 > * No keyword arguments to specify static arguments.
 
 ## State of coverage of JAX primitives

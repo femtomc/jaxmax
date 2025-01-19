@@ -2,7 +2,7 @@
 authors = [{ name = "McCoy Reynolds Becker", email = "mccoyb@mit.edu" }]
 dependencies = []
 description = "Lowering JAX computations to MAX graphs."
-name = "jaxmax"
+name = "juju"
 requires-python = ">=3.11"
 version = "0.1.0"
 
@@ -19,13 +19,13 @@ channels = [
 platforms = ["osx-arm64"]
 
 [tool.pixi.pypi-dependencies]
-jaxmax = { path = ".", editable = true }
+juju = { path = ".", editable = true }
 beartype = ">=0.19.0,<0.20"
 jax = ">=0.4.35,<0.5"
 pytest = ">=8.3.4,<9"
 
 [tool.pixi.tasks]
-kernels = "mojo package ./src/jaxmax/kernels -o kernels.mojopkg"
+kernels = "mojo package ./src/juju/kernels -o kernels.mojopkg"
 format = "ruff format . && ruff check --fix"
 
 [tool.pixi.dependencies]

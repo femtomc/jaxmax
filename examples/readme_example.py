@@ -1,7 +1,7 @@
 import jax.numpy as jnp
 from jax import grad
 
-from jaxmax import max, max_graph
+from juju import max, max_graph
 
 
 @max

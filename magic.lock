@@ -1127,7 +1127,7 @@ packages:
   - scipy>=1.11.1 ; python_full_version >= '3.12'
   requires_python: '>=3.10'
 - pypi: .
-  name: jaxmax
+  name: juju
   version: 0.1.0
   sha256: b684090430adda163a3c85d82e2351b71b6b8d3135da9b27b508e580e6f592c2
   requires_python: '>=3.11'

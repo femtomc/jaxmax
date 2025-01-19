@@ -2,7 +2,7 @@ import time
 
 import jax.numpy as jnp
 
-from jaxmax import jit
+from juju import jit
 
 
 def timing(f):

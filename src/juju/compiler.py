@@ -13,7 +13,7 @@ from max import engine
 from max.driver import CPU
 from max.graph import Graph, TensorType, TensorValue
 
-from jaxmax.rules import max_rules, max_types
+from juju.rules import max_rules, max_types
 
 Any = btyping.Any
 VarOrLiteral = jc.Var | jc.Literal

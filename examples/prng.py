@@ -1,6 +1,6 @@
 from jax import random as jrand
 
-from jaxmax import max
+from juju import max
 
 
 def fn(key):

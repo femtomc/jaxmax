@@ -4,7 +4,7 @@ import jax.tree_util as jtu
 from beartype.typing import Callable
 from max import engine
 
-from jaxmax.compiler import _max
+from juju.compiler import _max
 
 
 @dataclass
