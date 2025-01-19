@@ -31,6 +31,7 @@ global_jit_engine = JITEngine()
 @dataclass
 class JITFunction:
     f: Callable[..., any]
+    coerces_to_jnp: bool = True
 
     def __call__(self, *args):
         jit_key = jtu.tree_structure(args)
@@ -46,14 +47,18 @@ class JITFunction:
             # the model stored in the session.
             def _compiled(*args):
                 flat_args = jtu.tree_leaves(args)
-                return jtu.tree_unflatten(
-                    defout, jtu.tree_map(jnp.from_dlpack, model.execute(*flat_args))
+                retval = model.execute(*flat_args)
+                retval = (
+                    jtu.tree_map(jnp.from_dlpack, retval)
+                    if self.coerces_to_jnp
+                    else retval
                 )
+                return jtu.tree_unflatten(defout, retval)
 
             # Store the function.
             global_jit_engine[self.f, jit_key] = (_compiled, graph)
             return _compiled(*args)
 
 
-def jit(f: Callable[..., any]):
-    return JITFunction(f)
+def jit(f: Callable[..., any], coerces_to_jnp: bool = True):
+    return JITFunction(f, coerces_to_jnp)
