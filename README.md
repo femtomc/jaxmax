@@ -90,9 +90,9 @@ def jax_code(x, y):
 print(jax_code(5.0, 10.0)) # 11.019581
 ```
 
-## JIT functionality
+## Using `juju.jit`
 
-This package contains a very simple implementation of JIT functionality based on a JIT cache using [static Pytree structure](https://jax.readthedocs.io/en/latest/pytrees.html):
+This package contains a very simple implementation of JIT functionality (similar to `jax.jit`) based on a JIT cache using [static Pytree structure](https://jax.readthedocs.io/en/latest/pytrees.html):
 
 ```python
 from jax import grad
