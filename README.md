@@ -21,7 +21,7 @@ def jax_code(x, y):
     v = v * v
     return jnp.sin(v)
 
-print(jax_code(5, 10).to_numpy()) # -0.93009484
+print(jax_code(5, 10)) # -0.93009484
 ```
 
 The way this API works is that the computation is first staged to a `Jaxpr`, and then an interpreter is run. The interpreter traverses the `Jaxpr`, and replaces JAX primitives (like `jax.lax.add_p`) with ones from [MAX's operation set](https://docs.modular.com/max/api/mojo/graph/ops/).
@@ -80,7 +80,7 @@ def jax_code(x, y):
     return jnp.sin(v)
 
 
-print(jax_code(5.0, 10.0).to_numpy()) # 11.019581
+print(jax_code(5.0, 10.0)) # 11.019581
 ```
 
 ## JIT functionality
