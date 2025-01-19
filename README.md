@@ -31,6 +31,13 @@ In theory, one could define the JIT-like functionality that we've all come to kn
 > [!WARNING]
 > You can't invoke these graphs _within a JAX computation which you `jax.jit`_ yet. In other words, you can't mix and max XLA and MAX in this package yet.
 
+## Getting started
+
+First, [install `magic`](https://docs.modular.com/magic/). Then, run `magic install` in the repository. This will setup your environment, which you can access via `magic shell`. You'll also want to run `magic run kernels` to build the custom MAX kernels provided as part of `juju`.
+
+Inside the shell, you can run the example snippets using `python examples/basic.py` (for instance).
+
+
 ## MAX graphs
 
 What is a MAX graph? Let's inspect one:
@@ -62,12 +69,6 @@ mo.graph @jax_code(%arg0: !mo.tensor<[], si32>, %arg1: !mo.tensor<[], si32>) -> 
 ```
 
 This is a MAX graph, an intermediate representation which can be fed to [MAX's execution engine](https://docs.modular.com/max/api/mojo/engine/) to perform computations.
-
-## Getting started
-
-First, [install `magic`](https://docs.modular.com/magic/). Then, run `magic install` in the repository. This will setup your environment, which you can access via `magic shell`. You'll also want to run `magic run kernels` to build the custom MAX kernels provided as part of `juju`.
-
-Inside the shell, you can run the example snippets using `python examples/basic.py` (for instance).
 
 ## Composition with JAX transformations
 
