@@ -1,6 +1,6 @@
 [project]
 authors = [{ name = "McCoy Reynolds Becker", email = "mccoyb@mit.edu" }]
-description = "Lowering JAX computations to MAX graphs."
+description = "A compiler from JAX to MAX."
 name = "juju"
 requires-python = ">=3.11"
 version = "0.1.0"
