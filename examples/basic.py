@@ -1,9 +1,9 @@
 import jax.numpy as jnp
 
-from juju import max
+from juju import max_execute
 
 
-@max
+@max_execute
 def fn(x, y):
     return x + y + 1
 

@@ -1,10 +1,10 @@
 from jax import random as jrand
 
-from juju import max
+from juju import max_execute
 
 
 def fn(key):
     return jrand.split(key)
 
 
-print(max(fn)(jrand.PRNGKey(1)))
+print(max_execute(fn)(jrand.PRNGKey(1)))

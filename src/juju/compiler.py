@@ -207,7 +207,7 @@ def make_max_graph(f: Callable[..., Any]):
     return wrapped
 
 
-def max(
+def max_execute(
     f: Callable[..., Any],
     device=CPU(),
     path="./kernels.mojopkg",
