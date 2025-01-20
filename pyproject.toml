@@ -15,7 +15,7 @@ channels = [
     "https://conda.modular.com/max-nightly",
     "https://repo.prefix.dev/modular-community",
 ]
-platforms = ["osx-arm64"]
+platforms = ["osx-arm64", "linux-64"]
 
 [tool.pixi.pypi-dependencies]
 juju = { path = ".", editable = true }
