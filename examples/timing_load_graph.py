@@ -18,13 +18,13 @@ def timing(f):
 
 def foo(x, y):
     v = x + y
-    for i in range(10000):
+    for i in range(10001):
         v = v + 1
     return v
 
 
-graph = timing(juju.make_max_graph)(foo)(5, 10)
+graph = juju.make_max_graph(foo)(5, 10)
 session = engine.InferenceSession(num_threads=8)
 model = timing(session.load)(graph)
-retval = timing(model.execute)(5, 10)[0]
+retval = model.execute(5, 10)[0]
 print(retval.to_numpy())
