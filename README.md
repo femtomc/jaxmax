@@ -106,7 +106,7 @@ Our approach is fully compositional with JAX transformations, meaning one can ap
 ```python
 from jax import grad
 import jax.numpy as jnp
-from juju import max_execute
+from juju import jit
 
 @jit
 @grad
