@@ -192,11 +192,30 @@ def compute_mandelbrot():
         height=HEIGHT,
         max_iterations=MAX_ITERATIONS,
     )
+```
 
+Now, if you print the MAX graph for this computation, you'll see something like this:
+
+```
+mo.graph @compute_mandelbrot() -> !mo.tensor<[15, 15], si32> attributes {argument_names = [], result_names = ["output0"]} {
+  %0 = mo.chain.create()
+  %1 = mo.constant {value = #M.dense_array<-1.500000e+00> : tensor<f32>} : !mo.tensor<[], f32>
+  %2 = mo.constant {value = #M.dense_array<-1.120000e+00> : tensor<f32>} : !mo.tensor<[], f32>
+  %3 = mo.constant {value = #M.dense_array<0.146666661> : tensor<f32>} : !mo.tensor<[], f32>
+  %4 = mo.constant {value = #M.dense_array<0.149333328> : tensor<f32>} : !mo.tensor<[], f32>
+  %5 = mo.constant {value = #M.dense_array<100> : tensor<si32>} : !mo.tensor<[], si32>
+  %6 = mo.custom {symbol = "mandelbrot"}(%1, %2, %3, %4, %5) : (!mo.tensor<[], f32>, !mo.tensor<[], f32>, !mo.tensor<[], f32>, !mo.tensor<[], f32>, !mo.tensor<[], si32>) -> !mo.tensor<[15, 15], si32>
+  mo.output %6 : !mo.tensor<[15, 15], si32>
+}
+```
+we can see our custom operation on line `%6`, along with its inputs and outputs.
+
+Executing the computation via MAX:
+```python
 print(jit(compute_mandelbrot)().to_numpy())
 ```
 
-producing:
+produces:
 ```
 [[  2   2   3   3   3   3   3   3   4   6   4   3   3   2   2]
  [  3   3   3   3   3   3   4   4   5   8  10   4   4   3   2]
