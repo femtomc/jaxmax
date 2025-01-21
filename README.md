@@ -121,6 +121,8 @@ print(jax_code(5.0, 10.0).to_numpy()) # 11.019581
 
 ## Extending `juju` with custom MAX operations
 
+[Full example here.](https://github.com/femtomc/juju/blob/main/examples/custom_primitives.py)
+
 [MAX supports a user-extensible operation set](https://docs.modular.com/nightly/max/tutorials/build-custom-ops/), and `juju` allows you to expose these operations into JAX computations which you intend to lower to MAX.
 
 To start, [one writes a kernel in Mojo](https://github.com/femtomc/juju/blob/main/src/juju/kernels/mandelbrot.mojo) and registers it with the MAX engine. 
@@ -130,8 +132,6 @@ In `juju`, this part looks like placing a `your_kernel.mojo` file into the `src/
 Now, `juju` exposes a registration function called `Primitive`. 
 
 ```python
-from juju import Primitive 
-
 # Lowering rule to MAX operation.
 def mandelbrot_max_lowering_rule(**params):
     min_x = params["min_x"]
