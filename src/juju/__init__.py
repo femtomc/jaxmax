@@ -10,11 +10,12 @@ conf = BeartypeConf(
 
 beartype_this_package(conf=conf)
 
-from .compiler import make_max_graph, max_execute
+from .compiler import make_max_graph
 from .jit import jit
+from .primitive import Primitive
 
 __all__ = [
+    "Primitive",
     "jit",
     "make_max_graph",
-    "max_execute",
 ]

@@ -1,0 +1,25 @@
+from beartype.typing import Callable
+from jax.extend.core import Primitive as JPrim
+
+from juju.rules import max_rules
+
+
+def Primitive(
+    name: str,
+    max_lowering_rule: Callable,
+    jax_abstract_evaluation_rule: Callable,
+    multiple_results=True,
+):
+    new_prim = JPrim(name + "_p")
+    new_prim.def_abstract_eval(jax_abstract_evaluation_rule)
+    max_rules.register(new_prim, max_lowering_rule)
+
+    def _raise_impl(*args, **params):
+        raise Exception(f"{name} is a MAX primitive, cannot be evaluated by JAX.")
+
+    new_prim.def_impl(_raise_impl)
+
+    def _invoke(*args, **params):
+        return new_prim.bind(*args, **params)
+
+    return _invoke

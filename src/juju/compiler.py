@@ -3,15 +3,12 @@ from dataclasses import dataclass, field
 
 import beartype.typing as btyping
 import jax.core as jc
-import jax.numpy as jnp
 import jax.tree_util as jtu
 from jax import util as jax_util
 from jax.extend import linear_util as lu
 from jax.extend.core import ClosedJaxpr, Jaxpr, Literal, Primitive, Var
 from jax.interpreters import partial_eval as pe
 from jax.util import safe_map
-from max import engine
-from max.driver import CPU
 from max.graph import Graph, TensorType, TensorValue, ops
 
 from juju.rules import max_rules, max_types
@@ -203,24 +200,5 @@ def make_max_graph(f: Callable[..., Any]):
     def wrapped(*args):
         _, graph = _max(f)(*args)
         return graph
-
-    return wrapped
-
-
-def max_execute(
-    f: Callable[..., Any],
-    device=CPU(),
-    path="./kernels.mojopkg",
-):
-    @functools.wraps(f)
-    def wrapped(*args):
-        defout, graph = _max(f)(*args)
-        session = engine.InferenceSession(
-            devices=[device],
-            custom_extensions=path,
-        )
-        model = session.load(graph)
-        ret = model.execute(*args)
-        return jtu.tree_unflatten(defout, jtu.tree_map(jnp.from_dlpack, ret))
 
     return wrapped

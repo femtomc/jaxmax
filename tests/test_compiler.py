@@ -3,7 +3,7 @@ import jax.numpy as jnp
 import pytest
 from jax import grad
 
-from juju import max_execute
+from juju import jit
 
 
 # This is a convenience function designed to support equality
@@ -16,11 +16,11 @@ def jax_equality_assertion(fn, *args):
         else:
             return v
 
-    assert check(pytest.approx(jax.jit(fn)(*args), 1e-5) == max_execute(fn)(*args))
+    assert check(pytest.approx(jax.jit(fn)(*args), 1e-5) == jit(fn)(*args))
 
 
 def tire_kick_assertion(fn, *args):
-    assert jnp.any(max_execute(fn)(*args))
+    assert jnp.any(jit(fn)(*args))
 
 
 class TestCompiler:

@@ -11,7 +11,9 @@ from juju.compiler import _max
 @dataclass
 class JITEngine:
     cache: dict = field(default_factory=dict)
-    session = engine.InferenceSession()
+    session = engine.InferenceSession(
+        custom_extensions="./kernels.mojopkg",
+    )
 
     def load(self, graph):
         return self.session.load(graph)
@@ -61,5 +63,8 @@ class JITFunction:
             return _compiled(*args)
 
 
-def jit(f: Callable[..., any], coerces_to_jnp: bool = True):
+def jit(
+    f: Callable[..., any],
+    coerces_to_jnp: bool = False,
+):
     return JITFunction(f, coerces_to_jnp)
