@@ -54,6 +54,28 @@ max_rules.register(primitives.log_p, ops.log)
 max_rules.register(primitives.floor_p, ops.floor)
 
 
+@max_rules.register_def(primitives.acos_p)
+def acos(x, **params):
+    ret = ops.custom(
+        name="acos",
+        values=[x],
+        out_types=[TensorType(dtype=x.dtype, shape=x.tensor.shape)],
+    )
+    return ret[0]
+
+
+@max_rules.register_def(primitives.iota_p)
+def iota(**params):
+    dtype = max_types[params["dtype"]]
+    shape = params["shape"]
+    ret = ops.custom(
+        name="iota",
+        values=[],
+        out_types=[TensorType(dtype=dtype, shape=shape)],
+    )
+    return ret[0]
+
+
 @max_rules.register_def(primitives.div_p)
 def div(x, y, **params):
     return ops.div(x, y)
