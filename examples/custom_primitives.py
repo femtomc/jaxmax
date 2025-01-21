@@ -19,29 +19,25 @@ def timing(f):
     return wrap
 
 
-def mandelbrot_max_lowering_rule(**params):
-    min_x = params["min_x"]
-    min_y = params["min_y"]
-    scale_x = params["scale_x"]
-    scale_y = params["scale_y"]
+def mandelbrot_max_lowering_rule(
+    min_x,
+    min_y,
+    scale_x,
+    scale_y,
+    max_iterations,
+    **params,
+):
     width = params["width"]
     height = params["height"]
-    max_iterations = params["max_iterations"]
     output_dtype = DType.int32
     return ops.custom(
         name="mandelbrot",
-        values=[
-            ops.constant(min_x, dtype=DType.float32),
-            ops.constant(min_y, dtype=DType.float32),
-            ops.constant(scale_x, dtype=DType.float32),
-            ops.constant(scale_y, dtype=DType.float32),
-            ops.constant(max_iterations, dtype=DType.int32),
-        ],
+        values=[min_x, min_y, scale_x, scale_y, max_iterations],
         out_types=[TensorType(dtype=output_dtype, shape=[height, width])],
     )[0].tensor
 
 
-def mandelbrot_abstract_eval(**params):
+def mandelbrot_abstract_eval(*args, **params):
     height = params["height"]
     width = params["width"]
     return ShapedArray((height, width), jnp.int32)
@@ -54,28 +50,34 @@ mandelbrot = Primitive(
     multiple_results=False,
 )
 
+WIDTH = 15
+HEIGHT = 15
 
-def compute_mandelbrot():
-    WIDTH = 15
-    HEIGHT = 15
-    MAX_ITERATIONS = 100
-    MIN_X = -1.5
-    MAX_X = 0.7
-    MIN_Y = -1.12
-    MAX_Y = 1.12
-    scale_x = (MAX_X - MIN_X) / WIDTH
-    scale_y = (MAX_Y - MIN_Y) / HEIGHT
+
+def compute_mandelbrot(min_x, min_y, scale_x, scale_y, max_iterations):
     return mandelbrot(
-        min_x=MIN_X,
-        min_y=MIN_Y,
-        scale_x=scale_x,
-        scale_y=scale_y,
+        min_x,
+        min_y,
+        scale_x,
+        scale_y,
+        max_iterations,
         width=WIDTH,
         height=HEIGHT,
-        max_iterations=MAX_ITERATIONS,
     )
 
 
-print(make_max_graph(compute_mandelbrot)())
-print(jit(compute_mandelbrot)().to_numpy())
-timing(jit(compute_mandelbrot))()
+MAX_ITERATIONS = 100
+MIN_X = -1.5
+MAX_X = 0.7
+MIN_Y = -1.12
+MAX_Y = 1.12
+scale_x = (MAX_X - MIN_X) / WIDTH
+scale_y = (MAX_Y - MIN_Y) / HEIGHT
+
+print(
+    make_max_graph(compute_mandelbrot)(MIN_X, MIN_Y, scale_x, scale_y, MAX_ITERATIONS)
+)
+
+print(
+    jit(compute_mandelbrot)(MIN_X, MIN_Y, scale_x, scale_y, MAX_ITERATIONS).to_numpy()
+)

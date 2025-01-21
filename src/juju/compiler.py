@@ -143,7 +143,7 @@ class MAXInterpreter:
     def _eval_jaxpr_max(
         self,
         name: str,
-        _jaxpr: Jaxpr,
+        jaxpr: Jaxpr,
         consts: list[Any],
         args: list[Any],
     ):
@@ -151,9 +151,9 @@ class MAXInterpreter:
         symbolic_args = map(tensor_type, args)
         symbolic_consts = map(tensor_value, consts)
         with Graph(name, input_types=list(symbolic_args)) as graph:
-            jax_util.safe_map(env.write, _jaxpr.invars, graph.inputs)
-            jax_util.safe_map(env.write, _jaxpr.constvars, symbolic_consts)
-            for eqn in _jaxpr.eqns:
+            jax_util.safe_map(env.write, jaxpr.invars, graph.inputs)
+            jax_util.safe_map(env.write, jaxpr.constvars, symbolic_consts)
+            for eqn in jaxpr.eqns:
                 invals = jax_util.safe_map(env.read, eqn.invars)
                 subfuns, params = eqn.primitive.get_bind_params(eqn.params)
                 args = subfuns + invals
@@ -167,7 +167,7 @@ class MAXInterpreter:
                     outvals = [outvals]
                 jax_util.safe_map(env.write, eqn.outvars, outvals)
 
-            graph.output(*jax_util.safe_map(env.read, _jaxpr.outvars))
+            graph.output(*jax_util.safe_map(env.read, jaxpr.outvars))
 
         return graph
 
@@ -175,11 +175,11 @@ class MAXInterpreter:
         def _inner(*args):
             return fn(*args, **kwargs)
 
-        _closed_jaxpr, (flat_args, _, out_tree) = stage(_inner)(*args)
-        _jaxpr, consts = _closed_jaxpr.jaxpr, _closed_jaxpr.literals
+        closed_jaxpr, (flat_args, _, out_tree) = stage(_inner)(*args)
+        jaxpr, consts = closed_jaxpr.jaxpr, closed_jaxpr.literals
         graph_out = self._eval_jaxpr_max(
             fn.__qualname__,
-            _jaxpr,
+            jaxpr,
             consts,
             flat_args,
         )
