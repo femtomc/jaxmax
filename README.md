@@ -121,7 +121,7 @@ print(jax_code(5.0, 10.0).to_numpy()) # 11.019581
 
 ## Extending `juju` with custom MAX operations
 
-[MAX supports a user-extensible operation set](https://docs.modular.com/nightly/max/tutorials/build-custom-ops/), and `juju` allows you to convenient plug these operations into JAX computations which you intend to lower to MAX.
+[MAX supports a user-extensible operation set](https://docs.modular.com/nightly/max/tutorials/build-custom-ops/), and `juju` allows you to expose these operations into JAX computations which you intend to lower to MAX.
 
 To start, [one writes a kernel in Mojo](https://github.com/femtomc/juju/blob/main/src/juju/kernels/mandelbrot.mojo) and registers it with the MAX engine. In `juju`, this part looks like placing a `your_kernel.mojo` file into the `src/juju/kernels` Mojo sub-package, and exporting your kernel in `src/juju/kernels/__init__.mojo`. Once you've done this, you can run `magic run kernels` to create a new kernel package (`./kernels.mojopkg`) for use via MAX's Python API, and through `juju`. 
 
