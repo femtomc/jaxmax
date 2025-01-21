@@ -79,5 +79,5 @@ print(
 )
 
 print(
-    jit(compute_mandelbrot)(MIN_X, MIN_Y, scale_x, scale_y, MAX_ITERATIONS).to_numpy()
+    timing(jit(compute_mandelbrot))(MIN_X, MIN_Y, scale_x, scale_y, MAX_ITERATIONS).to_numpy()
 )
