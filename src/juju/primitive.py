@@ -20,6 +20,8 @@ def Primitive(
     new_prim.def_abstract_eval(jax_abstract_evaluation_rule)
     max_rules.register(new_prim, max_lowering_rule)
 
+    # JAX can't execute the code by itself!
+    # We have to use MAX, so we raise an exception if JAX tries to evaluate the primitive.
     def _raise_impl(*args, **params):
         raise Exception(f"{name} is a MAX primitive, cannot be evaluated by JAX.")
 
