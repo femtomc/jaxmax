@@ -361,6 +361,8 @@ def jit(
     print(foo(5).to_numpy())
     ```
 
+    **Automatic conversion of MAX tensors to JAX arrays**
+
     `juju.jit` supports an option called `coerces_to_jnp`
     which can be used to automatically convert MAX tensors
     to JAX numpy arrays. By default, this option is set to `False`.
@@ -376,6 +378,21 @@ def jit(
 
 
     print(foo(5))
+    ```
+
+    **Customizing the target platform**
+
+    If you have a GPU available, you can execute the code by using the
+    `gpu_engine` function to create a JIT engine that uses the GPU.
+
+    ```python
+    import jax.numpy as jnp
+    from juju import jit, gpu_engine
+
+
+    @jit(engine=gpu_engine())
+    def foo(x):
+        return x * x
     ```
     """
     if f is None:
