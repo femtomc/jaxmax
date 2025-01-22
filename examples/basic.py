@@ -1,13 +1,13 @@
 import jax
 import jax.numpy as jnp
 
-from juju import jit
+from juju import make_max_graph
 
 
 def fn(x):
-    return jnp.reshape(x, (3, 3))
+    return jnp.mean(x * jnp.linspace(x, 1, 50))
 
 
-print(jax.make_jaxpr(fn)(jnp.ones(9)))
+print(jax.make_jaxpr(fn)(-1.0))
 
-print(jit(fn)(jnp.ones(9)).to_numpy())
+print(make_max_graph(fn)(-1.0))

@@ -11,15 +11,5 @@ struct Iota:
     fn execute[
         synchronous: Bool,
         target: StringLiteral,
-    ](out: ManagedTensorSlice, ctx: MojoCallContextPtr,):
-        var v = iota[out.type, out.width](0)
-
-        @parameter
-        @always_inline
-        fn load_iota[
-            width: Int
-        ](idx: IndexList[out.rank]) -> SIMD[out.type, width]:
-            var v = iota[out.type, width]()
-            return v[idx[0]]
-
-        foreach[load_iota, synchronous, target](out, ctx)
+    ](out: ManagedTensorSlice, len: Int, ctx: MojoCallContextPtr,):
+        iota[out.type](out.unsafe_ptr(), len, 0)

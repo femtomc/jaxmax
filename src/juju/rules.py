@@ -64,16 +64,15 @@ def acos(x, **params):
     return ret[0]
 
 
+# This is dumb -- fix with kernel iota later.
 @max_rules.register_def(primitives.iota_p)
 def iota(**params):
-    dtype = max_types[params["dtype"]]
     shape = params["shape"]
-    ret = ops.custom(
-        name="iota",
-        values=[],
-        out_types=[TensorType(dtype=dtype, shape=shape)],
+    dtype = params["dtype"]
+    return ops.constant(
+        np.arange(0, shape[0], dtype=dtype),
+        dtype=max_types[dtype],
     )
-    return ret[0]
 
 
 @max_rules.register_def(primitives.div_p)
@@ -88,17 +87,7 @@ def integer_pow(x, y, **params):
 
 @max_rules.register_def(primitives.reduce_sum_p)
 def reduce_sum(x, **params):
-    ret = ops.custom(
-        name="reduce_sum",
-        values=[x],
-        out_types=[TensorType(dtype=x.dtype, shape=x.tensor.shape)],
-    )
-    return ret[0]
-
-
-@max_rules.register_def(primitives.broadcast_in_dim_p)
-def broadcast_in_dim(x, **params):
-    assert False, "broadcast_in_dim not implemented"
+    raise NotImplementedError("TODO")
 
 
 @max_rules.register_def(primitives.neg_p)
@@ -119,6 +108,17 @@ def convert_element_type(x, **params):
 @max_rules.register_def(primitives.reshape_p)
 def reshape(x, **params):
     return ops.reshape(x, params["new_sizes"])
+
+
+@max_rules.register_def(primitives.broadcast_in_dim_p)
+def broadcast_in_dim(x, **params):
+    shape = params["shape"]
+    return ops.broadcast_to(x, shape)
+
+
+@max_rules.register_def(primitives.concatenate_p)
+def concatenate(*args, **params):
+    return ops.concat(list(args), axis=params["dimension"])
 
 
 ##############

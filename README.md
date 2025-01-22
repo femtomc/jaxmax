@@ -5,10 +5,10 @@
 <img width="300px" src="./good_juju.png"/>
 </p>
 
+`juju` is a compiler from [JAX](https://github.com/jax-ml/jax) to [MAX](https://www.modular.com/max). It supports functionality which is designed to transform _JAX computations_ into [MAX computation graphs](https://docs.modular.com/max). These graphs can then be executed using MAX.
+
 > [!CAUTION]
 > This package is a proof-of-concept, and likely has sharp edges. Simple programs only for now! Tons of JAX primitives are missing lowering rules. It's not yet clear _how much of JAX_ will be fully supported (and how many extensions via MAX kernels will be added).
-
-`juju` is a compiler from [JAX](https://github.com/jax-ml/jax) to [MAX](https://www.modular.com/max). It supports functionality which is designed to transform _JAX computations_ into [MAX computation graphs](https://docs.modular.com/max). These graphs can then be executed using MAX.
 
 **Example:**
 ```python

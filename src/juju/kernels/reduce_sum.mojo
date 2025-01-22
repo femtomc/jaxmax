@@ -23,9 +23,3 @@ struct ReduceSum:
             return x.load[width](idx) + 1
 
         foreach[reduce_sum, synchronous, target](out, ctx)
-
-    @staticmethod
-    fn shape(
-        x: ManagedTensorSlice,
-    ) raises -> IndexList[x.rank]:
-        raise "NotImplemented"

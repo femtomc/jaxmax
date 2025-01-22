@@ -5,6 +5,7 @@ import beartype.typing as btyping
 import jax.core as jc
 import jax.tree_util as jtu
 from jax import util as jax_util
+from jax._src import pjit
 from jax.extend import linear_util as lu
 from jax.extend.core import ClosedJaxpr, Jaxpr, Literal, Primitive, Var
 from jax.interpreters import partial_eval as pe
@@ -202,3 +203,39 @@ def make_max_graph(f: Callable[..., Any]):
         return graph
 
     return wrapped
+
+
+######################
+# Special primitives #
+######################
+
+
+@max_rules.register_def(pjit.pjit_p)
+def pjit(*args, **params):
+    def inline_jaxpr(
+        jaxpr: Jaxpr,
+        consts: list[Any],
+        args: list[Any],
+    ):
+        env = Environment()
+        jax_util.safe_map(env.write, jaxpr.invars, args)
+        symbolic_consts = map(tensor_value, consts)
+        jax_util.safe_map(env.write, jaxpr.constvars, symbolic_consts)
+        for eqn in jaxpr.eqns:
+            invals = jax_util.safe_map(env.read, eqn.invars)
+            subfuns, params = eqn.primitive.get_bind_params(eqn.params)
+            args = subfuns + invals
+            rule = max_rules[eqn.primitive]
+            args = jax_util.safe_map(tensor_value, args)
+            try:
+                outvals = rule(*args, **params)
+            except Exception:
+                raise Exception(eqn.primitive)
+            if not eqn.primitive.multiple_results:
+                outvals = [outvals]
+            jax_util.safe_map(env.write, eqn.outvars, outvals)
+
+        return jax_util.safe_map(env.read, jaxpr.outvars)
+
+    closed_jaxpr = params["jaxpr"]
+    return inline_jaxpr(closed_jaxpr.jaxpr, closed_jaxpr.literals, list(args))
