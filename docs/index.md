@@ -31,10 +31,24 @@ print(jax_code(5, 10).to_numpy()) # -0.93009484
 
 ## Getting started
 
-If you're just starting out, you probably want to use `juju.jit`. This is an API which allows you to execute JAX compatible Python programs using MAX.
+To get started with `juju`, you'll need to follow these steps:
+
+- First, [install `magic`](https://docs.modular.com/magic/), the package and compiler manager for MAX and Mojo.
+- Then, clone this repository, and run `magic install` at the toplevel. This will setup your environment, which you can access via `magic shell`. 
+- Then, run `magic run kernels` to build the custom MAX kernels provided as part of `juju`.
+
+## Basic APIs
+
+To start out, let's examine basic APIs which allow you to execute functions using MAX, and create MAX graphs. 
 
 ::: juju.jit
 
 ::: juju.make_max_graph
 
 ## Custom operations and primitives
+
+A very nice feature of MAX is that [the operation set is extensible](https://docs.modular.com/nightly/max/tutorials/build-custom-ops/), and [the language for authoring operations is Mojo](https://www.modular.com/mojo), a language with high-level ergonomics (compared to CUDA, for instance).
+
+As a result, extending the operation set with new GPU computations is much more approachable than extending XLA with custom CUDA computations, and can be performed without leaving the `juju` project or introducing external compilers (besides the Mojo compiler, which is accessed via `magic`).
+
+::: juju.Primitive
