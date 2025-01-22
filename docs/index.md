@@ -154,7 +154,7 @@ To aid in the effort of coordination between JAX and MAX, `juju` exposes a funct
 
 For instance, to use our `add_one` kernel, one would use the following patterns:
 
-```python exec="on" source="material-block"
+```python title="using_our_prim.py" exec="on" source="material-block"
 from juju import Primitive, jit
 from jax.core import ShapedArray
 import jax.numpy as jnp
