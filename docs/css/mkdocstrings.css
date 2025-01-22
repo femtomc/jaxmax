@@ -27,11 +27,12 @@ a.autorefs-external:hover::after {
 }
 
 span.doc.doc-object-name {
-    font-family: "Noto Sans Mono", monospace;
-    font-weight: 600;
+    font-family: "Berkeley Mono", monospace;
+    font-weight: 900;
 }
 
 div.result {
     font-size: 0.85em;
-    font-family: "Noto Sans Mono", monospace;
+    font-family: "Berkeley Mono", monospace;
+    font-weight: 800;
 }

@@ -1,24 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap');
-
 @font-face {
-    font-family: 'Cal Sans';
-    src: url('../fonts/CalSans-SemiBold.woff2') format('woff2');
+    font-family: 'Berkeley Mono';
+    src: url('../fonts/Berkeley\ Mono\ Variable.woff2') format('woff2');
     font-style: normal;
 }
 
-.md-typeset h1,
-.md-typeset h2,
-.md-typeset h3,
-.md-typeset h4,
-.md-typeset h5,
-.md-typeset h6 {
-    font-weight: bold;
-    font-family: "Cal Sans";
-}
-
 .md-typeset code {
-    font-family: 'Noto Sans Mono', ui-monospace;
-    font-weight: 600;
+    font-family: 'Berkeley Mono', ui-monospace;
+    font-weight: 800;
+    font-stretch: semi-condensed;
 }
 
 .md-footer,

@@ -23,8 +23,6 @@ nav:
 theme:
   name: material
   logo: assets/good_juju.png
-  font:
-      text: Noto Sans
   icon:
     repo: fontawesome/brands/github
   features:
@@ -84,6 +82,7 @@ extra:
     provider: mike
 
 extra_css:
+  - fonts/univers.css
   - css/custom.css
   - css/mkdocstrings.css
 
@@ -96,18 +95,13 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - admonition
-  - pymdownx.details
-  - pymdownx.snippets
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-      use_pygments: true
   - pymdownx.inlinehilite
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.arithmatex:
-      generic: true
+  - pymdownx.snippets
+  - pymdownx.superfences 
   - toc:
       title: On this page
       toc_depth: 3
