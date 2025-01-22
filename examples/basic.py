@@ -5,7 +5,7 @@ from juju import make_max_graph
 
 
 def fn(x):
-    return jnp.mean(x * jnp.linspace(x, 1, 50))
+    return x * jnp.linspace(x, 1, 50)
 
 
 print(jax.make_jaxpr(fn)(-1.0))

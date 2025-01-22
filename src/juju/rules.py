@@ -121,6 +121,13 @@ def concatenate(*args, **params):
     return ops.concat(list(args), axis=params["dimension"])
 
 
+@max_rules.register_def(primitives.slice_p)
+def slice(*args, **params):
+    print(args)
+    print(params)
+    assert False
+
+
 ##############
 # Randomness #
 ##############
