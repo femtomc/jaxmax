@@ -66,6 +66,12 @@ plugins:
   - search
   - offline
   - markdown-exec
+  - git-authors
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - git-committers:
+      repository: femtomc/juju
+      branch: main
   - mkdocstrings:
       enabled: !ENV [ENABLE_MKDOCSTRINGS, true]
       handlers:
@@ -97,9 +103,6 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 markdown_extensions:
-  - abbr
-  - attr_list
-  - md_in_html
   - admonition
   - pymdownx.highlight:
       anchor_linenums: true
