@@ -10,6 +10,12 @@ def Primitive(
     jax_abstract_evaluation_rule: Callable,
     multiple_results=True,
 ):
+    """
+    Construct a new JAX primitive, and register `jax_abstract_evaluation_rule`
+    as the abstract evaluation rule for the primitive for JAX, and `max_lowering_rule` for `juju`'s lowering interpreter.
+
+    Returns a function that invokes the primitive via JAX's `Primitive.bind` method.
+    """
     new_prim = JPrim(name + "_p")
     new_prim.def_abstract_eval(jax_abstract_evaluation_rule)
     max_rules.register(new_prim, max_lowering_rule)
