@@ -5,7 +5,7 @@ import beartype.typing as btyping
 import jax.core as jc
 import jax.numpy as jnp
 import jax.tree_util as jtu
-from beartype.typing import Callable
+from beartype.typing import Callable, Optional
 from jax import util as jax_util
 from jax._src import pjit
 from jax.extend import linear_util as lu
@@ -13,6 +13,7 @@ from jax.extend.core import ClosedJaxpr, Jaxpr, Literal, Primitive, Var
 from jax.interpreters import partial_eval as pe
 from jax.util import safe_map
 from max import engine
+from max.driver import CPU, Accelerator
 from max.graph import Graph, TensorType, TensorValue, ops
 
 from juju.rules import max_rules, max_types
@@ -200,6 +201,23 @@ def _max(f: Callable[..., Any]):
 
 
 def make_max_graph(f: Callable[..., Any]):
+    """
+    **Example:**
+
+    ```python exec="on" source="material-block"
+    import jax.numpy as jnp
+    from juju import make_max_graph
+
+
+    @make_max_graph
+    def foo(x):
+        return x * x
+
+
+    print(foo(5))
+    ```
+    """
+
     @functools.wraps(f)
     def wrapped(*args):
         _, graph = _max(f)(*args)
@@ -249,6 +267,7 @@ class JITEngine:
     cache: dict = field(default_factory=dict)
     session = engine.InferenceSession(
         custom_extensions="./kernels.mojopkg",
+        devices=[CPU()],
     )
 
     def load(self, graph):
@@ -264,23 +283,34 @@ class JITEngine:
         self.cache[key] = val
 
 
-global_jit_engine = JITEngine()
+def default_engine():
+    return JITEngine()
+
+
+def gpu_engine():
+    return JITEngine(
+        session=engine.InferenceSession(
+            custom_extensions="./kernels.mojopkg",
+            devices=[Accelerator()],
+        )
+    )
 
 
 @dataclass
 class JITFunction:
     f: Callable[..., any]
     coerces_to_jnp: bool = True
+    engine: JITEngine = field(default_factory=default_engine)
 
     def __call__(self, *args):
         jit_key = jtu.tree_structure(args)
-        if (self.f, jit_key) in global_jit_engine.cache:
-            compiled, _ = global_jit_engine.cache[self.f, jit_key]
+        if (self.f, jit_key) in self.engine.cache:
+            compiled, _ = self.engine.cache[self.f, jit_key]
             return compiled(*args)
         else:
             # Static tracing to generate a graph.
             defout, graph = _max(self.f)(*args)
-            model = global_jit_engine.load(graph)
+            model = self.engine.load(graph)
 
             # Generate a function which executes the graph using
             # the model stored in the session.
@@ -295,12 +325,60 @@ class JITFunction:
                 return jtu.tree_unflatten(defout, retval)
 
             # Store the function.
-            global_jit_engine[self.f, jit_key] = (_compiled, graph)
+            self.engine[self.f, jit_key] = (_compiled, graph)
             return _compiled(*args)
 
 
 def jit(
-    f: Callable[..., any],
+    f: Optional[Callable[..., any]] = None,
     coerces_to_jnp: bool = False,
+    custom_engine: JITEngine = default_engine(),
 ):
-    return JITFunction(f, coerces_to_jnp)
+    """
+    JIT compiles a function using MAX by first creating a MAX graph,
+    loading it into the MAX engine, and then executing it.
+
+    The first invocation of the JIT'd function will be slow to compile,
+    but subsequent invocations will be fast, as the graph is cached by MAX,
+    and `juju` stores a callable function which avoids repeating
+    the lowering process.
+
+    **Example:**
+
+    ```python exec="on" source="material-block"
+    import jax.numpy as jnp
+    from juju import jit
+
+
+    @jit
+    def foo(x):
+        return x * x
+
+
+    print(foo(5).to_numpy())
+    ```
+
+    `juju.jit` supports an option called `coerces_to_jnp`
+    which can be used to automatically convert MAX tensors
+    to JAX numpy arrays. By default, this option is set to `False`.
+
+    ```python exec="on" source="material-block"
+    import jax.numpy as jnp
+    from juju import jit
+
+
+    @jit(coerces_to_jnp=True)
+    def foo(x):
+        return x * x
+
+
+    print(foo(5))
+    ```
+    """
+    if f is None:
+        return functools.partial(
+            jit,
+            coerces_to_jnp=coerces_to_jnp,
+            custom_engine=custom_engine,
+        )
+    return JITFunction(f, coerces_to_jnp, custom_engine)

@@ -23,6 +23,8 @@ nav:
 theme:
   name: material
   logo: assets/good_juju.png
+  font:
+    text: Roboto
   icon:
     repo: fontawesome/brands/github
   features:
@@ -59,6 +61,7 @@ watch:
 plugins:
   - search
   - offline
+  - markdown-exec
   - mkdocstrings:
       enabled: !ENV [ENABLE_MKDOCSTRINGS, true]
       handlers:
@@ -82,7 +85,6 @@ extra:
     provider: mike
 
 extra_css:
-  - fonts/univers.css
   - css/custom.css
   - css/mkdocstrings.css
 
