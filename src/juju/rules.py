@@ -123,8 +123,6 @@ def concatenate(*args, **params):
 
 @max_rules.register_def(primitives.slice_p)
 def slice(*args, **params):
-    print(args)
-    print(params)
     assert False
 
 
