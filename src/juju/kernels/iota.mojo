@@ -12,6 +12,8 @@ struct Iota:
         synchronous: Bool,
         target: StringLiteral,
     ](out: ManagedTensorSlice, ctx: MojoCallContextPtr,):
+        var v = iota[out.type, out.width](0)
+
         @parameter
         @always_inline
         fn load_iota[

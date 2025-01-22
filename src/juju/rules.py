@@ -116,6 +116,11 @@ def convert_element_type(x, **params):
     return ops.cast(x, dtype=max_types[params["new_dtype"]])
 
 
+@max_rules.register_def(primitives.reshape_p)
+def reshape(x, **params):
+    return ops.reshape(x, params["new_sizes"])
+
+
 ##############
 # Randomness #
 ##############
