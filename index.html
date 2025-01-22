@@ -931,7 +931,7 @@ for the provided function using JAX tracing.</p>
 </span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="s2">&quot;NotImplemented&quot;</span>
 </span></code></pre></div>
 <p>Kernels are Mojo structures that are decorated with <code>@compiler.register</code>, and they contain a method called <code>execute</code> which contains the execution semantics of the kernel.</p>
-<p>To expose the kernel as a MAX operation, the kernel needs to be placed into a Mojo package -- meaning we need an <code>kernels/__init__.mojo</code>:</p>
+<p>To expose the kernel as a MAX operation, the kernel needs to be placed into a Mojo package -- meaning we need a <code>kernels/__init__.mojo</code>:</p>
 <div class="language-mojo highlight"><span class="filename">kernels/__init__.mojo</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">.add_one</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="o">*</span>
 </span></code></pre></div>
 <p>We can then ask <code>mojo</code> to compile the Mojo package into a <code>kernels.mojopkg</code>, which we can then use via MAX's Python API to give MAX access to the kernels:</p>
