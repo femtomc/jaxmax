@@ -332,7 +332,7 @@ class JITFunction:
 def jit(
     f: Optional[Callable[..., any]] = None,
     coerces_to_jnp: bool = False,
-    custom_engine: JITEngine = default_engine(),
+    engine: JITEngine = default_engine(),
 ):
     """
     JIT compiles a function using MAX by first creating a MAX graph,
@@ -379,6 +379,6 @@ def jit(
         return functools.partial(
             jit,
             coerces_to_jnp=coerces_to_jnp,
-            custom_engine=custom_engine,
+            engine=engine,
         )
-    return JITFunction(f, coerces_to_jnp, custom_engine)
+    return JITFunction(f, coerces_to_jnp, engine)
