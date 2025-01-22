@@ -13,6 +13,7 @@
 # limitations under the License.
 
 site_name: juju 
+repo_url: https://github.com/femtomc/juju
 repo_name: femtomc/juju
 edit_uri: edit/main/docs/
 copyright: Copyright &copy; 2025 McCoy Reynolds Becker & MIT Probabilistic Computing Project
@@ -27,7 +28,9 @@ theme:
   font:
     text: Roboto
   icon:
-    repo: fontawesome/brands/github
+    repo: fontawesome/brands/github-alt
+    edit: material/pencil
+    view: material/eye
   features:
     - optimize
     - content.action.edit
