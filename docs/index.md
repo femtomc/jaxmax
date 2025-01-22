@@ -69,7 +69,7 @@ from tensor_utils import ManagedTensorSlice, foreach
 from runtime.asyncrt import MojoCallContextPtr
 
 
-@compiler.register("add_one_custom", num_dps_outputs=1)
+@compiler.register("add_one", num_dps_outputs=1)
 struct AddOneCustom:
     @staticmethod
     fn execute[
@@ -164,7 +164,7 @@ from max.graph import ops, TensorType
 # juju's lowering interpreter.
 def add_one_lowering(x, **params):
     return ops.custom(
-        name="add_one",
+        name="add_one", # needs to match your @compiler.register name
         values=[x],
         out_types=[TensorType(dtype=x.dtype, shape=x.tensor.shape)],
     )[0]
@@ -175,7 +175,11 @@ def add_one_abstract(x, **params):
     return ShapedArray(x.shape, x.dtype)
 
 # Register and coordinate everything, get a callable back.
-add_one = Primitive("add_one", add_one_lowering, add_one_abstract)
+add_one = Primitive(
+    "add_one", # can be anything
+    add_one_lowering, 
+    add_one_abstract,
+)
 
 @jit
 def jaxable_program(x):
