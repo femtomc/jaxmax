@@ -37,4 +37,4 @@ If you're just starting out, you probably want to use `juju.jit`. This is an API
 
 ::: juju.make_max_graph
 
-## Going deeper: custom operations and primitives
+## Custom operations and primitives
