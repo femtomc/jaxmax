@@ -268,7 +268,7 @@ def pjit(*args, **params):
 @dataclass
 class JITEngine:
     cache: dict = field(default_factory=dict)
-    session = engine.InferenceSession(
+    session: engine.InferenceSession = engine.InferenceSession(
         custom_extensions="./kernels.mojopkg",
         devices=[CPU()],
     )
@@ -295,7 +295,7 @@ def gpu_engine():
         session=engine.InferenceSession(
             custom_extensions="./kernels.mojopkg",
             devices=[Accelerator()],
-        )
+        ),
     )
 
 
