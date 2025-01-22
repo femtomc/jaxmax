@@ -200,8 +200,11 @@ def _max(f: Callable[..., Any]):
     return wrapped
 
 
-def make_max_graph(f: Callable[..., Any]):
+def make_max_graph(f: Callable[..., Any]) -> Callable[..., Graph]:
     """
+    Returns a function that constructs and returns a MAX graph
+    for the provided function using JAX tracing.
+
     **Example:**
 
     ```python exec="on" source="material-block"
@@ -283,7 +286,7 @@ class JITEngine:
         self.cache[key] = val
 
 
-def default_engine():
+def cpu_engine():
     return JITEngine()
 
 
@@ -300,7 +303,7 @@ def gpu_engine():
 class JITFunction:
     f: Callable[..., any]
     coerces_to_jnp: bool = True
-    engine: JITEngine = field(default_factory=default_engine)
+    engine: JITEngine = field(default_factory=cpu_engine)
 
     def __call__(self, *args):
         jit_key = jtu.tree_structure(args)
@@ -332,10 +335,10 @@ class JITFunction:
 def jit(
     f: Optional[Callable[..., any]] = None,
     coerces_to_jnp: bool = False,
-    engine: JITEngine = default_engine(),
+    engine: JITEngine = cpu_engine(),
 ):
     """
-    JIT compiles a function using MAX by first creating a MAX graph,
+    Returns a function which JIT compiles the provided function using MAX by first creating a MAX graph,
     loading it into the MAX engine, and then executing it.
 
     The first invocation of the JIT'd function will be slow to compile,

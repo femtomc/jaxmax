@@ -23,6 +23,7 @@ nav:
 theme:
   name: material
   logo: assets/good_juju.png
+  favicon: assets/good_juju.png 
   font:
     text: Roboto
   icon:
