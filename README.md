@@ -2,7 +2,7 @@
 
 <br>
 <p align="center">
-<img width="300px" src="./good_juju.png"/>
+<img width="300px" src=".docs/assets/good_juju.png"/>
 </p>
 
 `juju` is a compiler from [JAX](https://github.com/jax-ml/jax) to [MAX](https://www.modular.com/max). It supports functionality which is designed to transform _JAX computations_ into [MAX computation graphs](https://docs.modular.com/max). These graphs can then be executed using MAX.

@@ -1,0 +1,113 @@
+# Copyright 2025 MIT Probabilistic Computing Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+site_name: juju 
+repo_name: femtomc/juju
+edit_uri: edit/main/docs/
+copyright: Copyright &copy; 2025 MIT Probabilistic Computing Project
+
+nav:
+  - Home: index.md
+
+theme:
+  name: material
+  logo: assets/good_juju.png
+  font:
+      text: Noto Sans
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - optimize
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - content.tooltips
+    - content.tabs.link
+    - navigation.footer
+    - navigation.expand
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - navigation.path
+    - navigation.prune
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+  palette:
+    - scheme: default
+      accent: red
+      primary: white
+
+watch:
+  - src/juju
+
+plugins:
+  - search
+  - offline
+  - mkdocstrings:
+      enabled: !ENV [ENABLE_MKDOCSTRINGS, true]
+      handlers:
+        python:
+          options:
+            group_by_category: true
+            show_symbol_type_toc: true
+            show_source: true
+            show_root_heading: true
+            show_root_full_path: true
+            show_symbol_type_heading: true
+            parameter_headings: true
+            separate_signature: true
+            signature_crossrefs: true
+            show_signature_annotations: true
+            summary: true
+
+extra:
+  generator: false
+  version:
+    provider: mike
+
+extra_css:
+  - css/custom.css
+  - css/mkdocstrings.css
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - abbr
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - toc:
+      title: On this page
+      toc_depth: 3
+      permalink: true
