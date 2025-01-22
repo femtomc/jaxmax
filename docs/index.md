@@ -152,7 +152,7 @@ To aid in the effort of coordination between JAX and MAX, `juju` exposes a funct
 
 ::: juju.Primitive
 
-For instance, for our `add_one` kernel, we might see the following:
+For instance, to use our `add_one` kernel, one would use the following patterns:
 
 ```python exec="on" source="material-block"
 from juju import Primitive, jit
@@ -160,6 +160,8 @@ from jax.core import ShapedArray
 import jax.numpy as jnp
 from max.graph import ops, TensorType
 
+# Lowering rule to MAX, gets called by 
+# juju's lowering interpreter.
 def add_one_lowering(x, **params):
     return ops.custom(
         name="add_one",
@@ -167,16 +169,20 @@ def add_one_lowering(x, **params):
         out_types=[TensorType(dtype=x.dtype, shape=x.tensor.shape)],
     )[0]
 
+# Abstract evaluation rule for JAX, gets called
+# by JAX when tracing a program to a Jaxpr.
 def add_one_abstract(x, **params):
     return ShapedArray(x.shape, x.dtype)
 
+# Register and coordinate everything, get a callable back.
 add_one = Primitive("add_one", add_one_lowering, add_one_abstract)
 
 @jit
 def jaxable_program(x):
     x = x * 2
-    return add_one(x)
+    return add_one(x) # use the callable
 
+# Execute your program using MAX.
 print(jaxable_program(jnp.ones(10)).to_numpy())
 ```
 
