@@ -104,7 +104,7 @@ struct AddOneCustom:
 
 Kernels are Mojo structures that are decorated with `@compiler.register`, and they contain a method called `execute` which contains the execution semantics of the kernel.
 
-To expose the kernel as a MAX operation, the kernel needs to be placed into a Mojo package -- meaning we need an `kernels/__init__.mojo`:
+To expose the kernel as a MAX operation, the kernel needs to be placed into a Mojo package -- meaning we need a `kernels/__init__.mojo`:
 
 ```mojo title="kernels/__init__.mojo"
 from .add_one import *
