@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Berkeley Mono';
+    src: url('../fonts/Berkeley\ Mono\ Variable.woff2') format('woff2');
+    font-style: normal;
+}
+
+.md-typeset code {
+    font-family: 'Berkeley Mono', ui-monospace;
+    font-weight: 800;
+    font-stretch: semi-condensed;
+}
+
+.md-footer,
+.md-source {
+    font-weight: 600;
+}
+
+.md-content {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+}
+
+div.md-header__ellipsis {
+    font-weight: bold;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+    font-weight: bold;
+}

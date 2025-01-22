@@ -1,0 +1,1145 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="assets/good_juju.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>juju</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_markdown_exec_pyodide.css">
+    
+      <link rel="stylesheet" href="assets/_markdown_exec_ansi.css">
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="css/custom.css">
+    
+      <link rel="stylesheet" href="css/mkdocstrings.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#juju-from-jax-to-max" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="juju" class="md-header__button md-logo" aria-label="juju" data-md-component="logo">
+      
+  <img src="assets/good_juju.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            juju
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="juju" class="md-nav__button md-logo" aria-label="juju" data-md-component="logo">
+      
+  <img src="assets/good_juju.png" alt="logo">
+
+    </a>
+    juju
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting started
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic APIs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#juju.jit" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;jit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#juju.make_max_graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;make_max_graph
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-operations-and-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom operations and primitives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom operations and primitives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-a-max-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing a MAX kernel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exposing-the-kernel-to-jax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exposing the kernel to JAX
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#juju.Primitive" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;Primitive
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting started
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic APIs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#juju.jit" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;jit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#juju.make_max_graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;make_max_graph
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-operations-and-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom operations and primitives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom operations and primitives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-a-max-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing a MAX kernel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exposing-the-kernel-to-jax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exposing the kernel to JAX
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#juju.Primitive" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;Primitive
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="edit/main/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="raw/main/docs/index.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="juju-from-jax-to-max"><code>juju</code>, from JAX to MAX.<a class="headerlink" href="#juju-from-jax-to-max" title="Permanent link">&para;</a></h1>
+<p align="center">
+<img width="300px" src="./assets/good_juju.png"/>
+</p>
+
+<p><code>juju</code> is a bit of compiler middleware bridging JAX to the world of MAX graphs. It allows:</p>
+<ul>
+<li>users to write JAX programs, lower those programs to MAX graphs, and execute those graphs on MAX-supported hardware, including CPUs, GPUs, and (later on), xPUs (whatever MAX supports).</li>
+<li>users to extend the Python JAX language (the primitives that JAX exposes to write numerical programs) with custom MAX kernels.</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Danger, Will Robinson!</p>
+<p>This package is a proof-of-concept, and really early in development. Simple programs only for now! Tons of JAX primitives are missing lowering rules. It's not yet clear <em>how much of JAX</em> will be fully supported (and how many extensions via MAX kernels will be added).</p>
+</div>
+<p><strong>Example:</strong></p>
+<p>Using <code>juju</code> to transform and execute code with MAX.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  <span class="n">File</span> <span class="s2">&quot;/Users/femtomc/Dev/juju/.magic/envs/docs/lib/python3.12/site-packages/markdown_exec/formatters/python.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">71</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_run_python</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">exec_python</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">code_block_id</span><span class="p">,</span> <span class="n">exec_globals</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  <span class="n">File</span> <span class="s2">&quot;/Users/femtomc/Dev/juju/.magic/envs/docs/lib/python3.12/site-packages/markdown_exec/formatters/_exec_python.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">8</span><span class="p">,</span> <span class="ow">in</span> <span class="n">exec_python</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">exec</span><span class="p">(</span><span class="n">compiled</span><span class="p">,</span> <span class="n">exec_globals</span><span class="p">)</span>  <span class="c1"># noqa: S102</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="o">^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  <span class="n">File</span> <span class="s2">&quot;&lt;code block: n1&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">juju</span><span class="w"> </span><span class="kn">import</span> <span class="n">jit</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  <span class="n">File</span> <span class="s2">&quot;/Users/femtomc/Dev/juju/src/juju/__init__.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">13</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">.compiler</span><span class="w"> </span><span class="kn">import</span> <span class="n">gpu_engine</span><span class="p">,</span> <span class="n">jit</span><span class="p">,</span> <span class="n">make_max_graph</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  <span class="n">File</span> <span class="s2">&quot;/Users/femtomc/Dev/juju/src/juju/compiler.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">269</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="k">class</span><span class="w"> </span><span class="nc">JITEngine</span><span class="p">:</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>  <span class="n">File</span> <span class="s2">&quot;/Users/femtomc/Dev/juju/src/juju/compiler.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">271</span><span class="p">,</span> <span class="ow">in</span> <span class="n">JITEngine</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">session</span><span class="p">:</span> <span class="n">engine</span><span class="o">.</span><span class="n">InferenceSession</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>                                       <span class="o">^^^^^^^^^^^^^^^^^^^^^^^^</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>  <span class="n">File</span> <span class="s2">&quot;/Users/femtomc/Dev/juju/.magic/envs/docs/lib/python3.12/site-packages/max/engine/api.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">694</span><span class="p">,</span> <span class="ow">in</span> <span class="fm">__init__</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">_impl</span> <span class="o">=</span> <span class="n">_InferenceSession</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>                 <span class="o">^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="ne">ValueError</span><span class="p">:</span> <span class="n">Error</span> <span class="n">locating</span> <span class="n">python</span> <span class="n">dependencies</span><span class="p">:</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">EMPTY</span> <span class="n">MESSAGE</span><span class="o">&gt;</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">At</span><span class="p">:</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>  <span class="o">&lt;</span><span class="n">frozen</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">70</span><span class="p">):</span> <span class="n">find_spec</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="nb">max</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">api</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">694</span><span class="p">):</span> <span class="fm">__init__</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">juju</span><span class="o">/</span><span class="n">compiler</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">271</span><span class="p">):</span> <span class="n">JITEngine</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">juju</span><span class="o">/</span><span class="n">compiler</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">269</span><span class="p">):</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>  <span class="o">&lt;</span><span class="n">frozen</span> <span class="n">importlib</span><span class="o">.</span><span class="n">_bootstrap</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">488</span><span class="p">):</span> <span class="n">_call_with_frames_removed</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>  <span class="o">&lt;</span><span class="n">frozen</span> <span class="n">importlib</span><span class="o">.</span><span class="n">_bootstrap_external</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">999</span><span class="p">):</span> <span class="n">exec_module</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>  <span class="o">&lt;</span><span class="n">frozen</span> <span class="n">importlib</span><span class="o">.</span><span class="n">_bootstrap</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">935</span><span class="p">):</span> <span class="n">_load_unlocked</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>  <span class="o">&lt;</span><span class="n">frozen</span> <span class="n">importlib</span><span class="o">.</span><span class="n">_bootstrap</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1331</span><span class="p">):</span> <span class="n">_find_and_load_unlocked</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>  <span class="o">&lt;</span><span class="n">frozen</span> <span class="n">importlib</span><span class="o">.</span><span class="n">_bootstrap</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1360</span><span class="p">):</span> <span class="n">_find_and_load</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">juju</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">13</span><span class="p">):</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>  <span class="o">&lt;</span><span class="n">frozen</span> <span class="n">importlib</span><span class="o">.</span><span class="n">_bootstrap</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">488</span><span class="p">):</span> <span class="n">_call_with_frames_removed</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>  <span class="o">&lt;</span><span class="n">frozen</span> <span class="n">importlib</span><span class="o">.</span><span class="n">_bootstrap_external</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">999</span><span class="p">):</span> <span class="n">exec_module</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>  <span class="o">&lt;</span><span class="n">frozen</span> <span class="n">importlib</span><span class="o">.</span><span class="n">_bootstrap</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">935</span><span class="p">):</span> <span class="n">_load_unlocked</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>  <span class="o">&lt;</span><span class="n">frozen</span> <span class="n">importlib</span><span class="o">.</span><span class="n">_bootstrap</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1331</span><span class="p">):</span> <span class="n">_find_and_load_unlocked</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>  <span class="o">&lt;</span><span class="n">frozen</span> <span class="n">importlib</span><span class="o">.</span><span class="n">_bootstrap</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1360</span><span class="p">):</span> <span class="n">_find_and_load</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>  <span class="o">&lt;</span><span class="n">code</span> <span class="n">block</span><span class="p">:</span> <span class="n">n1</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">markdown_exec</span><span class="o">/</span><span class="n">formatters</span><span class="o">/</span><span class="n">_exec_python</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span> <span class="n">exec_python</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">markdown_exec</span><span class="o">/</span><span class="n">formatters</span><span class="o">/</span><span class="n">python</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">71</span><span class="p">):</span> <span class="n">_run_python</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">markdown_exec</span><span class="o">/</span><span class="n">formatters</span><span class="o">/</span><span class="n">base</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">144</span><span class="p">):</span> <span class="n">base_format</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">markdown_exec</span><span class="o">/</span><span class="n">formatters</span><span class="o">/</span><span class="n">python</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">85</span><span class="p">):</span> <span class="n">_format_python</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">markdown_exec</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">127</span><span class="p">):</span> <span class="n">formatter</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pymdownx</span><span class="o">/</span><span class="n">superfences</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">209</span><span class="p">):</span> <span class="n">_formatter</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pymdownx</span><span class="o">/</span><span class="n">superfences</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">479</span><span class="p">):</span> <span class="n">process_nested_block</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pymdownx</span><span class="o">/</span><span class="n">superfences</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">430</span><span class="p">):</span> <span class="n">eval_fence</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pymdownx</span><span class="o">/</span><span class="n">superfences</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">722</span><span class="p">):</span> <span class="n">search_nested</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pymdownx</span><span class="o">/</span><span class="n">superfences</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">888</span><span class="p">):</span> <span class="n">run</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">core</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">354</span><span class="p">):</span> <span class="n">convert</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">mkdocs</span><span class="o">/</span><span class="n">structure</span><span class="o">/</span><span class="n">pages</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">285</span><span class="p">):</span> <span class="n">render</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">mkdocs</span><span class="o">/</span><span class="n">commands</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">167</span><span class="p">):</span> <span class="n">_populate_page</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">mkdocs</span><span class="o">/</span><span class="n">commands</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">310</span><span class="p">):</span> <span class="n">build</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">mkdocs</span><span class="o">/</span><span class="n">__main__</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">315</span><span class="p">):</span> <span class="n">gh_deploy_command</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">click</span><span class="o">/</span><span class="n">core</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">788</span><span class="p">):</span> <span class="n">invoke</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">click</span><span class="o">/</span><span class="n">core</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">1443</span><span class="p">):</span> <span class="n">invoke</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">click</span><span class="o">/</span><span class="n">core</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">1697</span><span class="p">):</span> <span class="n">invoke</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">click</span><span class="o">/</span><span class="n">core</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">1082</span><span class="p">):</span> <span class="n">main</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">click</span><span class="o">/</span><span class="n">core</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">1161</span><span class="p">):</span> <span class="fm">__call__</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">femtomc</span><span class="o">/</span><span class="n">Dev</span><span class="o">/</span><span class="n">juju</span><span class="o">/.</span><span class="n">magic</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">mkdocs</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<p>To get started with <code>juju</code>, you'll need to follow these steps:</p>
+<ul>
+<li>First, <a href="https://docs.modular.com/magic/">install <code>magic</code></a>, the package and compiler manager for MAX and Mojo.</li>
+<li>Then, clone this repository, and run <code>magic install</code> at the toplevel. This will setup your environment, which you can access via <code>magic shell</code>. </li>
+<li>Then, run <code>magic run kernels</code> to build the custom MAX kernels provided as part of <code>juju</code>.</li>
+</ul>
+<h2 id="basic-apis">Basic APIs<a class="headerlink" href="#basic-apis" title="Permanent link">&para;</a></h2>
+<p>To start out, let's examine basic APIs which allow you to execute functions using MAX, and create MAX graphs. </p>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="juju.jit" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">juju.jit</span>
+
+
+<a href="#juju.jit" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">jit</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">f</span><span class="p">:</span> <span class="n"><span title="beartype.typing.Optional">Optional</span></span><span class="p">[</span><span class="n"><span title="juju.compiler.Callable">Callable</span></span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">coerces_to_jnp</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">engine</span><span class="p">:</span> <span class="n"><span title="juju.compiler.JITEngine">JITEngine</span></span> <span class="o">=</span> <span class="n"><span title="juju.compiler.cpu_engine">cpu_engine</span></span><span class="p">(),</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents first">
+
+        <p>Returns a function which JIT compiles the provided function using MAX by first creating a MAX graph,
+loading it into the MAX engine, and then executing it.</p>
+<p>The first invocation of the JIT'd function will be slow to compile,
+but subsequent invocations will be fast, as the graph is cached by MAX,
+and <code>juju</code> stores a callable function which avoids repeating
+the lowering process.</p>
+<p><strong>Example:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">juju</span><span class="w"> </span><span class="kn">import</span> <span class="n">jit</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nd">@jit</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">foo</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+</span></code></pre></div>
+<div class="result">
+<p>25</p>
+</div>
+<p><code>juju.jit</code> supports an option called <code>coerces_to_jnp</code>
+which can be used to automatically convert MAX tensors
+to JAX numpy arrays. By default, this option is set to <code>False</code>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">juju</span><span class="w"> </span><span class="kn">import</span> <span class="n">jit</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nd">@jit</span><span class="p">(</span><span class="n">coerces_to_jnp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">foo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="result">
+<p>25</p>
+</div>
+
+            <details class="quote">
+              <summary>Source code in <code>src/juju/compiler.py</code></summary>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-335">335</a></span>
+<span class="normal"><a href="#__codelineno-0-336">336</a></span>
+<span class="normal"><a href="#__codelineno-0-337">337</a></span>
+<span class="normal"><a href="#__codelineno-0-338">338</a></span>
+<span class="normal"><a href="#__codelineno-0-339">339</a></span>
+<span class="normal"><a href="#__codelineno-0-340">340</a></span>
+<span class="normal"><a href="#__codelineno-0-341">341</a></span>
+<span class="normal"><a href="#__codelineno-0-342">342</a></span>
+<span class="normal"><a href="#__codelineno-0-343">343</a></span>
+<span class="normal"><a href="#__codelineno-0-344">344</a></span>
+<span class="normal"><a href="#__codelineno-0-345">345</a></span>
+<span class="normal"><a href="#__codelineno-0-346">346</a></span>
+<span class="normal"><a href="#__codelineno-0-347">347</a></span>
+<span class="normal"><a href="#__codelineno-0-348">348</a></span>
+<span class="normal"><a href="#__codelineno-0-349">349</a></span>
+<span class="normal"><a href="#__codelineno-0-350">350</a></span>
+<span class="normal"><a href="#__codelineno-0-351">351</a></span>
+<span class="normal"><a href="#__codelineno-0-352">352</a></span>
+<span class="normal"><a href="#__codelineno-0-353">353</a></span>
+<span class="normal"><a href="#__codelineno-0-354">354</a></span>
+<span class="normal"><a href="#__codelineno-0-355">355</a></span>
+<span class="normal"><a href="#__codelineno-0-356">356</a></span>
+<span class="normal"><a href="#__codelineno-0-357">357</a></span>
+<span class="normal"><a href="#__codelineno-0-358">358</a></span>
+<span class="normal"><a href="#__codelineno-0-359">359</a></span>
+<span class="normal"><a href="#__codelineno-0-360">360</a></span>
+<span class="normal"><a href="#__codelineno-0-361">361</a></span>
+<span class="normal"><a href="#__codelineno-0-362">362</a></span>
+<span class="normal"><a href="#__codelineno-0-363">363</a></span>
+<span class="normal"><a href="#__codelineno-0-364">364</a></span>
+<span class="normal"><a href="#__codelineno-0-365">365</a></span>
+<span class="normal"><a href="#__codelineno-0-366">366</a></span>
+<span class="normal"><a href="#__codelineno-0-367">367</a></span>
+<span class="normal"><a href="#__codelineno-0-368">368</a></span>
+<span class="normal"><a href="#__codelineno-0-369">369</a></span>
+<span class="normal"><a href="#__codelineno-0-370">370</a></span>
+<span class="normal"><a href="#__codelineno-0-371">371</a></span>
+<span class="normal"><a href="#__codelineno-0-372">372</a></span>
+<span class="normal"><a href="#__codelineno-0-373">373</a></span>
+<span class="normal"><a href="#__codelineno-0-374">374</a></span>
+<span class="normal"><a href="#__codelineno-0-375">375</a></span>
+<span class="normal"><a href="#__codelineno-0-376">376</a></span>
+<span class="normal"><a href="#__codelineno-0-377">377</a></span>
+<span class="normal"><a href="#__codelineno-0-378">378</a></span>
+<span class="normal"><a href="#__codelineno-0-379">379</a></span>
+<span class="normal"><a href="#__codelineno-0-380">380</a></span>
+<span class="normal"><a href="#__codelineno-0-381">381</a></span>
+<span class="normal"><a href="#__codelineno-0-382">382</a></span>
+<span class="normal"><a href="#__codelineno-0-383">383</a></span>
+<span class="normal"><a href="#__codelineno-0-384">384</a></span>
+<span class="normal"><a href="#__codelineno-0-385">385</a></span>
+<span class="normal"><a href="#__codelineno-0-386">386</a></span>
+<span class="normal"><a href="#__codelineno-0-387">387</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-335"><a id="__codelineno-0-335" name="__codelineno-0-335"></a><span class="k">def</span><span class="w"> </span><span class="nf">jit</span><span class="p">(</span>
+</span><span id="__span-0-336"><a id="__codelineno-0-336" name="__codelineno-0-336"></a>    <span class="n">f</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="nb">any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-337"><a id="__codelineno-0-337" name="__codelineno-0-337"></a>    <span class="n">coerces_to_jnp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-0-338"><a id="__codelineno-0-338" name="__codelineno-0-338"></a>    <span class="n">engine</span><span class="p">:</span> <span class="n">JITEngine</span> <span class="o">=</span> <span class="n">cpu_engine</span><span class="p">(),</span>
+</span><span id="__span-0-339"><a id="__codelineno-0-339" name="__codelineno-0-339"></a><span class="p">):</span>
+</span><span id="__span-0-340"><a id="__codelineno-0-340" name="__codelineno-0-340"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-341"><a id="__codelineno-0-341" name="__codelineno-0-341"></a><span class="sd">    Returns a function which JIT compiles the provided function using MAX by first creating a MAX graph,</span>
+</span><span id="__span-0-342"><a id="__codelineno-0-342" name="__codelineno-0-342"></a><span class="sd">    loading it into the MAX engine, and then executing it.</span>
+</span><span id="__span-0-343"><a id="__codelineno-0-343" name="__codelineno-0-343"></a>
+</span><span id="__span-0-344"><a id="__codelineno-0-344" name="__codelineno-0-344"></a><span class="sd">    The first invocation of the JIT&#39;d function will be slow to compile,</span>
+</span><span id="__span-0-345"><a id="__codelineno-0-345" name="__codelineno-0-345"></a><span class="sd">    but subsequent invocations will be fast, as the graph is cached by MAX,</span>
+</span><span id="__span-0-346"><a id="__codelineno-0-346" name="__codelineno-0-346"></a><span class="sd">    and `juju` stores a callable function which avoids repeating</span>
+</span><span id="__span-0-347"><a id="__codelineno-0-347" name="__codelineno-0-347"></a><span class="sd">    the lowering process.</span>
+</span><span id="__span-0-348"><a id="__codelineno-0-348" name="__codelineno-0-348"></a>
+</span><span id="__span-0-349"><a id="__codelineno-0-349" name="__codelineno-0-349"></a><span class="sd">    **Example:**</span>
+</span><span id="__span-0-350"><a id="__codelineno-0-350" name="__codelineno-0-350"></a>
+</span><span id="__span-0-351"><a id="__codelineno-0-351" name="__codelineno-0-351"></a><span class="sd">    ```python exec=&quot;on&quot; source=&quot;material-block&quot;</span>
+</span><span id="__span-0-352"><a id="__codelineno-0-352" name="__codelineno-0-352"></a><span class="sd">    import jax.numpy as jnp</span>
+</span><span id="__span-0-353"><a id="__codelineno-0-353" name="__codelineno-0-353"></a><span class="sd">    from juju import jit</span>
+</span><span id="__span-0-354"><a id="__codelineno-0-354" name="__codelineno-0-354"></a>
+</span><span id="__span-0-355"><a id="__codelineno-0-355" name="__codelineno-0-355"></a>
+</span><span id="__span-0-356"><a id="__codelineno-0-356" name="__codelineno-0-356"></a><span class="sd">    @jit</span>
+</span><span id="__span-0-357"><a id="__codelineno-0-357" name="__codelineno-0-357"></a><span class="sd">    def foo(x):</span>
+</span><span id="__span-0-358"><a id="__codelineno-0-358" name="__codelineno-0-358"></a><span class="sd">        return x * x</span>
+</span><span id="__span-0-359"><a id="__codelineno-0-359" name="__codelineno-0-359"></a>
+</span><span id="__span-0-360"><a id="__codelineno-0-360" name="__codelineno-0-360"></a>
+</span><span id="__span-0-361"><a id="__codelineno-0-361" name="__codelineno-0-361"></a><span class="sd">    print(foo(5).to_numpy())</span>
+</span><span id="__span-0-362"><a id="__codelineno-0-362" name="__codelineno-0-362"></a><span class="sd">    ```</span>
+</span><span id="__span-0-363"><a id="__codelineno-0-363" name="__codelineno-0-363"></a>
+</span><span id="__span-0-364"><a id="__codelineno-0-364" name="__codelineno-0-364"></a><span class="sd">    `juju.jit` supports an option called `coerces_to_jnp`</span>
+</span><span id="__span-0-365"><a id="__codelineno-0-365" name="__codelineno-0-365"></a><span class="sd">    which can be used to automatically convert MAX tensors</span>
+</span><span id="__span-0-366"><a id="__codelineno-0-366" name="__codelineno-0-366"></a><span class="sd">    to JAX numpy arrays. By default, this option is set to `False`.</span>
+</span><span id="__span-0-367"><a id="__codelineno-0-367" name="__codelineno-0-367"></a>
+</span><span id="__span-0-368"><a id="__codelineno-0-368" name="__codelineno-0-368"></a><span class="sd">    ```python exec=&quot;on&quot; source=&quot;material-block&quot;</span>
+</span><span id="__span-0-369"><a id="__codelineno-0-369" name="__codelineno-0-369"></a><span class="sd">    import jax.numpy as jnp</span>
+</span><span id="__span-0-370"><a id="__codelineno-0-370" name="__codelineno-0-370"></a><span class="sd">    from juju import jit</span>
+</span><span id="__span-0-371"><a id="__codelineno-0-371" name="__codelineno-0-371"></a>
+</span><span id="__span-0-372"><a id="__codelineno-0-372" name="__codelineno-0-372"></a>
+</span><span id="__span-0-373"><a id="__codelineno-0-373" name="__codelineno-0-373"></a><span class="sd">    @jit(coerces_to_jnp=True)</span>
+</span><span id="__span-0-374"><a id="__codelineno-0-374" name="__codelineno-0-374"></a><span class="sd">    def foo(x):</span>
+</span><span id="__span-0-375"><a id="__codelineno-0-375" name="__codelineno-0-375"></a><span class="sd">        return x * x</span>
+</span><span id="__span-0-376"><a id="__codelineno-0-376" name="__codelineno-0-376"></a>
+</span><span id="__span-0-377"><a id="__codelineno-0-377" name="__codelineno-0-377"></a>
+</span><span id="__span-0-378"><a id="__codelineno-0-378" name="__codelineno-0-378"></a><span class="sd">    print(foo(5))</span>
+</span><span id="__span-0-379"><a id="__codelineno-0-379" name="__codelineno-0-379"></a><span class="sd">    ```</span>
+</span><span id="__span-0-380"><a id="__codelineno-0-380" name="__codelineno-0-380"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-0-381"><a id="__codelineno-0-381" name="__codelineno-0-381"></a>    <span class="k">if</span> <span class="n">f</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-382"><a id="__codelineno-0-382" name="__codelineno-0-382"></a>        <span class="k">return</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
+</span><span id="__span-0-383"><a id="__codelineno-0-383" name="__codelineno-0-383"></a>            <span class="n">jit</span><span class="p">,</span>
+</span><span id="__span-0-384"><a id="__codelineno-0-384" name="__codelineno-0-384"></a>            <span class="n">coerces_to_jnp</span><span class="o">=</span><span class="n">coerces_to_jnp</span><span class="p">,</span>
+</span><span id="__span-0-385"><a id="__codelineno-0-385" name="__codelineno-0-385"></a>            <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
+</span><span id="__span-0-386"><a id="__codelineno-0-386" name="__codelineno-0-386"></a>        <span class="p">)</span>
+</span><span id="__span-0-387"><a id="__codelineno-0-387" name="__codelineno-0-387"></a>    <span class="k">return</span> <span class="n">JITFunction</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">coerces_to_jnp</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="juju.make_max_graph" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">juju.make_max_graph</span>
+
+
+<a href="#juju.make_max_graph" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">make_max_graph</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">f</span><span class="p">:</span> <span class="n"><span title="juju.compiler.Callable">Callable</span></span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n"><span title="juju.compiler.Any">Any</span></span><span class="p">],</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="juju.compiler.Callable">Callable</span></span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n"><span title="max.graph.Graph">Graph</span></span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents first">
+
+        <p>Returns a function that constructs and returns a MAX graph
+for the provided function using JAX tracing.</p>
+<p><strong>Example:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">juju</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_max_graph</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nd">@make_max_graph</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">foo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="result">
+<p>mo.graph @foo(%arg0: !mo.tensor&lt;[], si32&gt;) -&gt; !mo.tensor&lt;[], si32&gt; attributes {argument_names = ["input0"], result_names = ["output0"]} {
+  %0 = mo.chain.create()
+  %1 = rmo.mul(%arg0, %arg0) : (!mo.tensor&lt;[], si32&gt;, !mo.tensor&lt;[], si32&gt;) -&gt; !mo.tensor&lt;[], si32&gt;
+  mo.output %1 : !mo.tensor&lt;[], si32&gt;
+}</p>
+</div>
+
+            <details class="quote">
+              <summary>Source code in <code>src/juju/compiler.py</code></summary>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-203">203</a></span>
+<span class="normal"><a href="#__codelineno-0-204">204</a></span>
+<span class="normal"><a href="#__codelineno-0-205">205</a></span>
+<span class="normal"><a href="#__codelineno-0-206">206</a></span>
+<span class="normal"><a href="#__codelineno-0-207">207</a></span>
+<span class="normal"><a href="#__codelineno-0-208">208</a></span>
+<span class="normal"><a href="#__codelineno-0-209">209</a></span>
+<span class="normal"><a href="#__codelineno-0-210">210</a></span>
+<span class="normal"><a href="#__codelineno-0-211">211</a></span>
+<span class="normal"><a href="#__codelineno-0-212">212</a></span>
+<span class="normal"><a href="#__codelineno-0-213">213</a></span>
+<span class="normal"><a href="#__codelineno-0-214">214</a></span>
+<span class="normal"><a href="#__codelineno-0-215">215</a></span>
+<span class="normal"><a href="#__codelineno-0-216">216</a></span>
+<span class="normal"><a href="#__codelineno-0-217">217</a></span>
+<span class="normal"><a href="#__codelineno-0-218">218</a></span>
+<span class="normal"><a href="#__codelineno-0-219">219</a></span>
+<span class="normal"><a href="#__codelineno-0-220">220</a></span>
+<span class="normal"><a href="#__codelineno-0-221">221</a></span>
+<span class="normal"><a href="#__codelineno-0-222">222</a></span>
+<span class="normal"><a href="#__codelineno-0-223">223</a></span>
+<span class="normal"><a href="#__codelineno-0-224">224</a></span>
+<span class="normal"><a href="#__codelineno-0-225">225</a></span>
+<span class="normal"><a href="#__codelineno-0-226">226</a></span>
+<span class="normal"><a href="#__codelineno-0-227">227</a></span>
+<span class="normal"><a href="#__codelineno-0-228">228</a></span>
+<span class="normal"><a href="#__codelineno-0-229">229</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-203"><a id="__codelineno-0-203" name="__codelineno-0-203"></a><span class="k">def</span><span class="w"> </span><span class="nf">make_max_graph</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Graph</span><span class="p">]:</span>
+</span><span id="__span-0-204"><a id="__codelineno-0-204" name="__codelineno-0-204"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-205"><a id="__codelineno-0-205" name="__codelineno-0-205"></a><span class="sd">    Returns a function that constructs and returns a MAX graph</span>
+</span><span id="__span-0-206"><a id="__codelineno-0-206" name="__codelineno-0-206"></a><span class="sd">    for the provided function using JAX tracing.</span>
+</span><span id="__span-0-207"><a id="__codelineno-0-207" name="__codelineno-0-207"></a>
+</span><span id="__span-0-208"><a id="__codelineno-0-208" name="__codelineno-0-208"></a><span class="sd">    **Example:**</span>
+</span><span id="__span-0-209"><a id="__codelineno-0-209" name="__codelineno-0-209"></a>
+</span><span id="__span-0-210"><a id="__codelineno-0-210" name="__codelineno-0-210"></a><span class="sd">    ```python exec=&quot;on&quot; source=&quot;material-block&quot;</span>
+</span><span id="__span-0-211"><a id="__codelineno-0-211" name="__codelineno-0-211"></a><span class="sd">    import jax.numpy as jnp</span>
+</span><span id="__span-0-212"><a id="__codelineno-0-212" name="__codelineno-0-212"></a><span class="sd">    from juju import make_max_graph</span>
+</span><span id="__span-0-213"><a id="__codelineno-0-213" name="__codelineno-0-213"></a>
+</span><span id="__span-0-214"><a id="__codelineno-0-214" name="__codelineno-0-214"></a>
+</span><span id="__span-0-215"><a id="__codelineno-0-215" name="__codelineno-0-215"></a><span class="sd">    @make_max_graph</span>
+</span><span id="__span-0-216"><a id="__codelineno-0-216" name="__codelineno-0-216"></a><span class="sd">    def foo(x):</span>
+</span><span id="__span-0-217"><a id="__codelineno-0-217" name="__codelineno-0-217"></a><span class="sd">        return x * x</span>
+</span><span id="__span-0-218"><a id="__codelineno-0-218" name="__codelineno-0-218"></a>
+</span><span id="__span-0-219"><a id="__codelineno-0-219" name="__codelineno-0-219"></a>
+</span><span id="__span-0-220"><a id="__codelineno-0-220" name="__codelineno-0-220"></a><span class="sd">    print(foo(5))</span>
+</span><span id="__span-0-221"><a id="__codelineno-0-221" name="__codelineno-0-221"></a><span class="sd">    ```</span>
+</span><span id="__span-0-222"><a id="__codelineno-0-222" name="__codelineno-0-222"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-0-223"><a id="__codelineno-0-223" name="__codelineno-0-223"></a>
+</span><span id="__span-0-224"><a id="__codelineno-0-224" name="__codelineno-0-224"></a>    <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</span><span id="__span-0-225"><a id="__codelineno-0-225" name="__codelineno-0-225"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</span><span id="__span-0-226"><a id="__codelineno-0-226" name="__codelineno-0-226"></a>        <span class="n">_</span><span class="p">,</span> <span class="n">graph</span> <span class="o">=</span> <span class="n">_max</span><span class="p">(</span><span class="n">f</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</span><span id="__span-0-227"><a id="__codelineno-0-227" name="__codelineno-0-227"></a>        <span class="k">return</span> <span class="n">graph</span>
+</span><span id="__span-0-228"><a id="__codelineno-0-228" name="__codelineno-0-228"></a>
+</span><span id="__span-0-229"><a id="__codelineno-0-229" name="__codelineno-0-229"></a>    <span class="k">return</span> <span class="n">wrapped</span>
+</span></code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div><h2 id="custom-operations-and-primitives">Custom operations and primitives<a class="headerlink" href="#custom-operations-and-primitives" title="Permanent link">&para;</a></h2>
+<p>A very nice feature of MAX is that <a href="https://docs.modular.com/nightly/max/tutorials/build-custom-ops/">the operation set is extensible</a>, and <a href="https://www.modular.com/mojo">the language for authoring operations is Mojo</a>, a language with high-level ergonomics (compared to CUDA, for instance).</p>
+<p>As a result, extending the operation set with new GPU computations is much more approachable than extending XLA with custom CUDA computations, and can be performed without leaving the <code>juju</code> project or introducing external compilers (besides the Mojo compiler, which is accessed via <code>magic</code>).</p>
+<p>There are two steps to exposing custom operations to <code>juju</code>:</p>
+<ul>
+<li>Writing a MAX kernel using Mojo.</li>
+<li>Exposing the kernel to MAX, and providing the necessary information to JAX in the form of a new <code>Primitive</code>.</li>
+</ul>
+<h3 id="writing-a-max-kernel">Writing a MAX kernel<a class="headerlink" href="#writing-a-max-kernel" title="Permanent link">&para;</a></h3>
+<p>A MAX kernel takes the form of a Mojo source code file. <a href="https://github.com/modular/max/tree/nightly/examples/custom_ops">The MAX development team has kindly shared several of these kernels for study.</a> Additionally, <a href="https://docs.modular.com/nightly/max/tutorials/build-custom-ops/">this article</a> is worth reading to gain a general understanding of custom operations.</p>
+<p>Let's examine a kernel, and imagine that we've placed this into a folder called <code>kernels/add_one.mojo</code>:</p>
+<div class="language-mojo highlight"><span class="filename">kernels/add_one.mojo</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">compiler</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">utils.index</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">IndexList</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tensor_utils</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">ManagedTensorSlice</span><span class="p">,</span><span class="w"> </span><span class="n">foreach</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">runtime.asyncrt</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">MojoCallContextPtr</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nd">@compiler</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;add_one_custom&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num_dps_outputs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">struct</span><span class="w"> </span><span class="n n-Struct">AddOneCustom</span><span class="p">:</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nd">@staticmethod</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">execute</span><span class="p">[</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="c1"># Parameter that if true, runs kernel synchronously in runtime</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="n">synchronous</span><span class="p">:</span><span class="w"> </span><span class="n">Bool</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="c1"># e.g. &quot;CUDA&quot; or &quot;CPU&quot;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="n">StringLiteral</span><span class="p">,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="p">](</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="c1"># as num_dps_outputs=1, the first argument is the &quot;output&quot;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="n">out</span><span class="p">:</span><span class="w"> </span><span class="n">ManagedTensorSlice</span><span class="p">,</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="c1"># starting here are the list of inputs</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="n">x</span><span class="p">:</span><span class="w"> </span><span class="n">ManagedTensorSlice</span><span class="p">[</span><span class="n">out</span><span class="o">.</span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="o">.</span><span class="n">rank</span><span class="p">],</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="c1"># the context is needed for some GPU calls</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="n">ctx</span><span class="p">:</span><span class="w"> </span><span class="n">MojoCallContextPtr</span><span class="p">,</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="p">):</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="nd">@parameter</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="nd">@always_inline</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">        </span><span class="k">fn</span><span class="w"> </span><span class="nf">func</span><span class="p">[</span><span class="n">width</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">](</span><span class="n">idx</span><span class="p">:</span><span class="w"> </span><span class="n">IndexList</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">rank</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb">SIMD</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">]:</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">load</span><span class="p">[</span><span class="n">width</span><span class="p">](</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">        </span><span class="n">foreach</span><span class="p">[</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">synchronous</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">](</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="p">)</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="c1"># You only need to implement this if you do not manually annotate</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="c1"># output shapes in the graph.</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="nd">@staticmethod</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">shape</span><span class="p">(</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">        </span><span class="n">x</span><span class="p">:</span><span class="w"> </span><span class="n">ManagedTensorSlice</span><span class="p">,</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="n">raises</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">IndexList</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">rank</span><span class="p">]:</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="s2">&quot;NotImplemented&quot;</span>
+</span></code></pre></div>
+<p>Kernels are Mojo structures that are decorated with <code>@compiler.register</code>, and they contain a method called <code>execute</code> which contains the execution semantics of the kernel.</p>
+<p>To expose the kernel as a MAX operation, the kernel needs to be placed into a Mojo package -- meaning we need an <code>kernels/__init__.mojo</code>:</p>
+<div class="language-mojo highlight"><span class="filename">kernels/__init__.mojo</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">.add_one</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="o">*</span>
+</span></code></pre></div>
+<p>We can then ask <code>mojo</code> to compile the Mojo package into a <code>kernels.mojopkg</code>, which we can then use via MAX's Python API to give MAX access to the kernels:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mojo package kernels -o kernels.mojopkg
+</span></code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Keep your kernels package up to date!</p>
+<p>When implementing custom operations, make sure that the kernels package you're using is up-to-date! Otherwise, during graph loading, MAX will complain about being unable to find your kernel.</p>
+</div>
+<p>In the Python API, we can give access to the kernels by providing a <code>custom_extensions</code> argument to <code>engine.InferenceSession</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">max</span><span class="w"> </span><span class="kn">import</span> <span class="n">engine</span> 
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">engine</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">custom_extensions</span><span class="o">=</span><span class="s2">&quot;./kernels.mojopkg&quot;</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>This is exactly how <code>juju</code> does this under the hood, and examining the code should provide further details.</p>
+<h3 id="exposing-the-kernel-to-jax">Exposing the kernel to JAX<a class="headerlink" href="#exposing-the-kernel-to-jax" title="Permanent link">&para;</a></h3>
+<p>Now, MAX is only one side of the coin. The other side is that we'd like to incorporate these computations in JAX source code. </p>
+<p>JAX allows users to extend JAX's program representations (<a href="https://jax.readthedocs.io/en/latest/jaxpr.html">the Jaxpr</a>) by introducing new <em>primitives</em>, units of computation that accept and return arrays.</p>
+<h4 id="interim-on-the-juju-pipeline">Interim on the <code>juju</code> pipeline<a class="headerlink" href="#interim-on-the-juju-pipeline" title="Permanent link">&para;</a></h4>
+<p><code>juju</code> plugs into JAX in the following way:</p>
+<ul>
+<li>(<strong>Tracing</strong>) First, we use JAX to trace Python computations to produce Jaxprs. </li>
+<li>(<strong>Lowering</strong>) Then, <code>juju</code> processes these Jaxprs with an interpreter to create MAX graphs.</li>
+</ul>
+<p>Let's say we want to introduce a new primitive to JAX. The first <strong>tracing</strong> stage requires that the primitive communicate with JAX about the shapes and dtypes of the arrays it accepts as input, as well as the shapes and dtypes of the arrays it produces as output. As long as we tell JAX this information, it doesn't care about "what the primitive does". We'll call this information a <code>jax_abstract_evaluation_rule</code>.</p>
+<p>The second <strong>lowering</strong> stage requires that we tell the <code>juju</code> interpreter how the primitive is going to be represented in the MAX graph. We'll call this information a <code>max_lowering_rule</code>.</p>
+<p>To aid in the effort of coordination between JAX and MAX, <code>juju</code> exposes a function called <code>juju.Primitive</code>:</p>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="juju.Primitive" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">juju.Primitive</span>
+
+
+<a href="#juju.Primitive" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">Primitive</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">max_lowering_rule</span><span class="p">:</span> <span class="n"><span title="beartype.typing.Callable">Callable</span></span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">jax_abstract_evaluation_rule</span><span class="p">:</span> <span class="n"><span title="beartype.typing.Callable">Callable</span></span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">multiple_results</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents first">
+
+        <p>Construct a new JAX primitive, and register <code>jax_abstract_evaluation_rule</code>
+as the abstract evaluation rule for the primitive for JAX, and <code>max_lowering_rule</code> for <code>juju</code>'s lowering interpreter.</p>
+<p>Returns a function that invokes the primitive via JAX's <code>Primitive.bind</code> method.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>src/juju/primitive.py</code></summary>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">Primitive</span><span class="p">(</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="n">max_lowering_rule</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="n">jax_abstract_evaluation_rule</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="n">multiple_results</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="p">):</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="sd">    Construct a new JAX primitive, and register `jax_abstract_evaluation_rule`</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="sd">    as the abstract evaluation rule for the primitive for JAX, and `max_lowering_rule` for `juju`&#39;s lowering interpreter.</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="sd">    Returns a function that invokes the primitive via JAX&#39;s `Primitive.bind` method.</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a>    <span class="n">new_prim</span> <span class="o">=</span> <span class="n">JPrim</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_p&quot;</span><span class="p">)</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a>    <span class="n">new_prim</span><span class="o">.</span><span class="n">def_abstract_eval</span><span class="p">(</span><span class="n">jax_abstract_evaluation_rule</span><span class="p">)</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a>    <span class="n">max_rules</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">new_prim</span><span class="p">,</span> <span class="n">max_lowering_rule</span><span class="p">)</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_raise_impl</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a>        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is a MAX primitive, cannot be evaluated by JAX.&quot;</span><span class="p">)</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a>    <span class="n">new_prim</span><span class="o">.</span><span class="n">def_impl</span><span class="p">(</span><span class="n">_raise_impl</span><span class="p">)</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_invoke</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a>        <span class="k">return</span> <span class="n">new_prim</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a>    <span class="k">return</span> <span class="n">_invoke</span>
+</span></code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div><p>For instance, to use our <code>add_one</code> kernel, one would use the following patterns:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">juju</span><span class="w"> </span><span class="kn">import</span> <span class="n">Primitive</span><span class="p">,</span> <span class="n">jit</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">jax.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShapedArray</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">max.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">ops</span><span class="p">,</span> <span class="n">TensorType</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Lowering rule to MAX, gets called by </span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># juju&#39;s lowering interpreter.</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">add_one_lowering</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="k">return</span> <span class="n">ops</span><span class="o">.</span><span class="n">custom</span><span class="p">(</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;add_one&quot;</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">],</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="n">out_types</span><span class="o">=</span><span class="p">[</span><span class="n">TensorType</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)],</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># Abstract evaluation rule for JAX, gets called</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># by JAX when tracing a program to a Jaxpr.</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">def</span><span class="w"> </span><span class="nf">add_one_abstract</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="k">return</span> <span class="n">ShapedArray</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="c1"># Register and coordinate everything, get a callable back.</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">add_one</span> <span class="o">=</span> <span class="n">Primitive</span><span class="p">(</span><span class="s2">&quot;add_one&quot;</span><span class="p">,</span> <span class="n">add_one_lowering</span><span class="p">,</span> <span class="n">add_one_abstract</span><span class="p">)</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="nd">@jit</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="k">def</span><span class="w"> </span><span class="nf">jaxable_program</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="k">return</span> <span class="n">add_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># use the callable</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="c1"># Execute your program using MAX.</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="nb">print</span><span class="p">(</span><span class="n">jaxable_program</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+</span></code></pre></div>
+<div class="result">
+<p>[3. 3. 3. 3. 3. 3. 3. 3. 3. 3.]</p>
+</div>
+<p>The point being that <code>juju.Primitive</code> acts as a very convenient glue between JAX and MAX.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 MIT Probabilistic Computing Project
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["optimize", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tooltips", "content.tabs.link", "navigation.footer", "navigation.expand", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.path", "navigation.prune", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="assets/_markdown_exec_pyodide.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
