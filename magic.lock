@@ -3216,7 +3216,7 @@ packages:
 - pypi: .
   name: juju
   version: 0.1.0
-  sha256: bfd7065bdf634c575783a3ebaeaff88ea72e9d1171e89593d0aff7ef89468410
+  sha256: 5bbd60dc4d277074147d0fda703bc53f9968d24d2b45d42d700112a1b52b0b70
   requires_python: '>=3.11'
   editable: true
 - conda: https://conda.anaconda.org/conda-forge/noarch/jupyter_client-8.6.3-pyhd8ed1ab_1.conda
