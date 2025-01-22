@@ -2,7 +2,7 @@ import time
 
 import jax.numpy as jnp
 
-from juju import jit
+from juju import gpu_engine, jit
 
 
 def timing(f):
@@ -16,7 +16,7 @@ def timing(f):
     return wrap
 
 
-@jit
+@jit(engine=gpu_engine())
 def jax_code(x, y):
     v = x + y
     v = v * v
