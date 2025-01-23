@@ -60,6 +60,16 @@ theme:
     - scheme: default
       accent: red
       primary: white
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    - scheme: slate
+      primary: black
+      accent: red
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
 
 watch:
   - src/juju
@@ -90,6 +100,9 @@ plugins:
             signature_crossrefs: true
             show_signature_annotations: true
             summary: true
+  - pygments:
+      light: autumn
+      dark: github-dark
 
 extra:
   generator: false
