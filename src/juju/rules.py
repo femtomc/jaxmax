@@ -24,10 +24,12 @@ class Ruleset:
     )
 
     def register(self, jax_primitive: Primitive, max_primitive):
+        assert jax_primitive not in self.max_rules, jax_primitive
         self.max_rules[jax_primitive] = max_primitive
 
     def register_def(self, jax_primitive: Primitive):
         def _register(rule):
+            assert jax_primitive not in self.max_rules, jax_primitive
             self.max_rules[jax_primitive] = rule
 
         return _register
@@ -40,6 +42,7 @@ max_rules = Ruleset()
 """
 Global rule dictionary used by the lowering interpreter.
 """
+
 
 ####################
 # Registered rules #
@@ -123,11 +126,6 @@ def broadcast_in_dim(x, **params):
 @max_rules.register_def(primitives.concatenate_p)
 def concatenate(*args, **params):
     return ops.concat(list(args), axis=params["dimension"])
-
-
-@max_rules.register_def(primitives.slice_p)
-def slice(*args, **params):
-    assert False
 
 
 ##############
