@@ -16,7 +16,7 @@ def Primitive(
 
     Returns a function that invokes the primitive via JAX's `Primitive.bind` method.
     """
-    new_prim = JPrim(name + "_p")
+    new_prim = JPrim(name)
     new_prim.def_abstract_eval(jax_abstract_evaluation_rule)
     max_rules.register(new_prim, max_lowering_rule)
 
