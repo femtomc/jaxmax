@@ -40,6 +40,9 @@ format = "ruff format src && mojo format src && ruff check src --fix"
 pygments = "pip install -e extras/mkdocs-pygments"
 docs = "mkdocs serve"
 
+[tool.pixi.feature.docs.pypi-dependencies]
+mkdocs-pygments = { path = "extras/mkdocs-pygments" }
+
 [tool.pixi.feature.gh-deploy.tasks]
 gh-deploy = "mkdocs gh-deploy --force"
 
