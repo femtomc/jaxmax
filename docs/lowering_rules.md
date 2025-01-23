@@ -7,7 +7,7 @@ Note that, even if a JAX primitive is in the list below, it's possible that _our
 ```python exec="on" source="material-block"
 from juju.rules import max_rules
 
-for primitive in list(max_rules.max_rules.keys()):
+for primitive in list(max_rules.keys()):
     print(primitive)
 ```
 
