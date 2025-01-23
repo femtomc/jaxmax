@@ -1,0 +1,3 @@
+[submodule "extras/mkdocs-pygments"]
+	path = extras/mkdocs-pygments
+	url = git@github.com:pawamoy-insiders/mkdocs-pygments.git

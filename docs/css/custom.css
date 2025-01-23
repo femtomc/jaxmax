@@ -5,7 +5,10 @@
 }
 
 .md-typeset code {
+    font-size: 1em;
     font-family: 'Berkeley Mono', ui-monospace;
+    font-weight: 500;
+    font-stretch: semi-condensed;
 }
 
 .md-footer,

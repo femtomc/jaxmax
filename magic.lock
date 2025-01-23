@@ -693,7 +693,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/67/e5/ffeb92db53af8c3aa2d92e21a3cf6b5f83eee7e03b9cf9234ef6b30230d5/mkdocs_git_revision_date_localized_plugin-1.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ee/b5/1bf29cd744896ae83bd38c72970782c843ba13e0240b1a85277bd3928637/mkdocs_material-9.5.50-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5b/54/662a4743aa81d9582ee9339d4ffa3c8fd40a4965e033d77b9da9774d3960/mkdocs_material_extensions-1.3.1-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/60/87/1366bb4a0db37204e0a0ab60aafcb1a0acbe0090f0c8a50660771991e864/mkdocs_pygments-0.0.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/cd/10/4c27c3063c2b3681a4b7942f8dbdeb4fa34fecb2c19b594e7345ebf4f86f/mkdocstrings-0.27.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/51/23/d02d86553327296c3bf369d444194ea83410cce8f0e690565264f37f3261/mkdocstrings_python-1.13.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/08/57/5d58fad4124192b1be42f68bd0c0ddaa26e44a730ff8c9337adade2f5632/ml_dtypes-0.5.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
@@ -934,7 +933,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/67/e5/ffeb92db53af8c3aa2d92e21a3cf6b5f83eee7e03b9cf9234ef6b30230d5/mkdocs_git_revision_date_localized_plugin-1.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ee/b5/1bf29cd744896ae83bd38c72970782c843ba13e0240b1a85277bd3928637/mkdocs_material-9.5.50-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5b/54/662a4743aa81d9582ee9339d4ffa3c8fd40a4965e033d77b9da9774d3960/mkdocs_material_extensions-1.3.1-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/60/87/1366bb4a0db37204e0a0ab60aafcb1a0acbe0090f0c8a50660771991e864/mkdocs_pygments-0.0.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/cd/10/4c27c3063c2b3681a4b7942f8dbdeb4fa34fecb2c19b594e7345ebf4f86f/mkdocstrings-0.27.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/51/23/d02d86553327296c3bf369d444194ea83410cce8f0e690565264f37f3261/mkdocstrings_python-1.13.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/47/56/1bb21218e1e692506c220ffabd456af9733fba7aa1b14f73899979f4cc20/ml_dtypes-0.5.1-cp312-cp312-macosx_10_9_universal2.whl
@@ -3263,7 +3261,7 @@ packages:
 - pypi: .
   name: juju
   version: 0.1.0
-  sha256: 5aa83a0736c0079be59a8c3218ab34f0c991be73e886f3237d7c95beb4c4a211
+  sha256: 5a15f35fc08546b3d4b3731e3dc509ed30dd60fe6aa45eff97e1155e1230723a
   requires_python: '>=3.11'
   editable: true
 - conda: https://conda.anaconda.org/conda-forge/noarch/jupyter_client-8.6.3-pyhd8ed1ab_1.conda
@@ -5046,11 +5044,6 @@ packages:
   name: mkdocs-material-extensions
   version: 1.3.1
   sha256: adff8b62700b25cb77b53358dad940f3ef973dd6db797907c49e3c2ef3ab4e31
-  requires_python: '>=3.8'
-- pypi: https://files.pythonhosted.org/packages/60/87/1366bb4a0db37204e0a0ab60aafcb1a0acbe0090f0c8a50660771991e864/mkdocs_pygments-0.0.1-py3-none-any.whl
-  name: mkdocs-pygments
-  version: 0.0.1
-  sha256: d3c2534c29f1c8ae2d67e49f6e474c4d854ef72baa4a9577d5190d2bcad411ce
   requires_python: '>=3.8'
 - pypi: https://files.pythonhosted.org/packages/cd/10/4c27c3063c2b3681a4b7942f8dbdeb4fa34fecb2c19b594e7345ebf4f86f/mkdocstrings-0.27.0-py3-none-any.whl
   name: mkdocstrings

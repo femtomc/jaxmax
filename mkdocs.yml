@@ -100,9 +100,12 @@ plugins:
             signature_crossrefs: true
             show_signature_annotations: true
             summary: true
-  - pygments:
-      light: autumn
-      dark: github-dark
+  
+  #- pygments:
+  #    light: gruvbox-light
+  #    respect_light_background: false
+  #    dark: gruvbox-dark
+  #    respect_dark_background: false
 
 extra:
   generator: false
