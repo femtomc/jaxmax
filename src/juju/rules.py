@@ -7,18 +7,19 @@ from jax.extend.core import Primitive, primitives
 from max.dtype import DType
 from max.graph import TensorType, ops
 
-Callable = btyping.Callable
-
 max_types = {
     np.dtype(np.uint32): DType.uint32,
     np.dtype(np.int32): DType.int32,
     np.dtype(np.float32): DType.float32,
 }
+"""
+Conversion from NumPy dtypes to MAX dtypes.
+"""
 
 
 @dataclass
 class Ruleset:
-    max_rules: dict[Primitive, Callable[[TensorType, ...], TensorType]] = field(
+    max_rules: dict[Primitive, btyping.Callable[[TensorType, ...], TensorType]] = field(
         default_factory=dict
     )
 
@@ -36,6 +37,9 @@ class Ruleset:
 
 
 max_rules = Ruleset()
+"""
+Global rule dictionary used by the lowering interpreter.
+"""
 
 ####################
 # Registered rules #

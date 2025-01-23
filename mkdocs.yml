@@ -20,6 +20,8 @@ copyright: Copyright &copy; 2025 McCoy Reynolds Becker & MIT Probabilistic Compu
 
 nav:
   - Home: index.md
+  - Pseudorandomness: pseudorandomness.md
+  - Lowering rules: lowering_rules.md
 
 theme:
   name: material
