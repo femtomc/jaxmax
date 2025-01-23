@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 
 import beartype.typing as btyping
 import numpy as np
-from jax._src import ad_util, prng
+from jax._src import ad_util
 from jax.extend.core import Primitive, primitives
 from max.dtype import DType
 from max.graph import TensorType, ops
@@ -19,23 +19,26 @@ Conversion from NumPy dtypes to MAX dtypes.
 
 @dataclass
 class Ruleset:
-    max_rules: dict[Primitive, btyping.Callable[[TensorType, ...], TensorType]] = field(
+    rules: dict[Primitive, btyping.Callable[[TensorType, ...], TensorType]] = field(
         default_factory=dict
     )
 
     def register(self, jax_primitive: Primitive, max_primitive):
-        assert jax_primitive not in self.max_rules, jax_primitive
-        self.max_rules[jax_primitive] = max_primitive
+        assert jax_primitive not in self.rules, jax_primitive
+        self.rules[jax_primitive] = max_primitive
 
     def register_def(self, jax_primitive: Primitive):
         def _register(rule):
-            assert jax_primitive not in self.max_rules, jax_primitive
-            self.max_rules[jax_primitive] = rule
+            assert jax_primitive not in self.rules, jax_primitive
+            self.rules[jax_primitive] = rule
 
         return _register
 
     def __getitem__(self, jax_primitive: Primitive):
-        return self.max_rules[jax_primitive]
+        return self.rules[jax_primitive]
+
+    def keys(self):
+        return self.rules.keys()
 
 
 max_rules = Ruleset()
@@ -126,30 +129,3 @@ def broadcast_in_dim(x, **params):
 @max_rules.register_def(primitives.concatenate_p)
 def concatenate(*args, **params):
     return ops.concat(list(args), axis=params["dimension"])
-
-
-##############
-# Randomness #
-##############
-
-
-# These are primitives which JAX may eventually deprecate,
-# and deal with conversion from custom key types to uint32 and back.
-@max_rules.register_def(prng.random_wrap_p)
-def random_wrap(x, **params):
-    return x
-
-
-@max_rules.register_def(prng.random_unwrap_p)
-def random_unwrap(x, **params):
-    return x
-
-
-@max_rules.register_def(prng.random_split_p)
-def random_split(x, **params):
-    ret = ops.custom(
-        name="random_split",
-        values=[x],
-        out_types=[TensorType(dtype=x.dtype, shape=x.tensor.shape)],
-    )
-    return ret[0]
