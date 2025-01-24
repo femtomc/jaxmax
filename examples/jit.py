@@ -1,6 +1,7 @@
 import time
 
 import jax.numpy as jnp
+import jax
 
 from juju import gpu_engine, jit
 
@@ -15,24 +16,10 @@ def timing(f):
 
     return wrap
 
+def fn(x):
+    for i in range(600000):
+        x = x + 1
+    return x
 
-@jit(engine=gpu_engine())
-def jax_code(x, y):
-    v = x + y
-    v = v * v
-    return jnp.sin(v)
-
-
-timing(jax_code)(5, 10)
-timing(jax_code)(5, 10)
-
-
-@jit
-def new_code(x, y):
-    v = x + y
-    v = v * v
-    return jnp.sin(v)
-
-
-timing(new_code)(5, 10)
-timing(new_code)(5, 10)
+print(len(jax.make_jaxpr(fn)(1.0).eqns))
+timing(jax.jit(fn).lower)(1.0)
