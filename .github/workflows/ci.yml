@@ -14,9 +14,7 @@ jobs:
           fetch-depth: 0
       
       - name: Install magic
-        uses: fabasoad/setup-mojo-action@v1
-        with:
-          force: "true"
+        uses: fabasoad/setup-mojo-action@v2
 
       - name: Install kernels
         run: magic run kernels
