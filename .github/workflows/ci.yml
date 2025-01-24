@@ -12,13 +12,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
+      
       - name: Install magic
-        run: curl -ssL https://magic.modular.com/deb1dd50-9fef-4d30-98ca-17cb32e01408 | bash
-      
-      - name: Activate environment with magic
-        run: source /home/runner/.bash_profile
-      
+        uses: fabasoad/setup-mojo-action@v1
+        with:
+          force: "true"
+
       - name: Install kernels
         run: magic run kernels
 
