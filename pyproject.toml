@@ -31,6 +31,10 @@ max = ">=25.1.0.dev2025012205,<26"
 
 [tool.pixi.feature.test.tasks]
 test = "magic run kernels && pytest tests"
+coverage = "pytest --cov-branch --cov-report=xml"
+
+[tool.pixi.feature.test.dependencies]
+pytest-cov = ">=6.0.0,<7"
 
 [tool.pixi.feature.docs.tasks]
 pygments = "pip install -e extras/mkdocs-pygments"

@@ -16,11 +16,18 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
 
+      - uses: fabasoad/setup-mojo-action@v1
+        with:
+          force: "false" 
+
       - name: Install dependencies
-        run: pip install pytest pytest-cov
+        run: magic install
+
+      - name: Install kernels
+        run: magic run kernels
 
       - name: Run tests
-        run: pytest --cov-branch --cov-report=xml
+        run: magic run coverage
 
       - name: Upload results to Codecov
         uses: codecov/codecov-action@v5
