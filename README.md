@@ -5,7 +5,7 @@
 <img width="300px" src="./docs/assets/good_juju.png"/>
 </p>
 
-[![][jax_badge]](https://github.com/google/jax) [![](https://img.shields.io/badge/docs-stable-blue.svg?style=flat-square)](https://femtomc.github.io/juju) 
+[![][jax_badge]](https://github.com/google/jax) [![](https://img.shields.io/badge/docs-stable-blue.svg?style=flat-square)](https://femtomc.github.io/juju) [![codecov](https://codecov.io/gh/femtomc/juju/graph/badge.svg?token=XOWC059QA9)](https://codecov.io/gh/femtomc/juju)
 
 `juju` is a compiler from [JAX](https://github.com/jax-ml/jax) to [MAX](https://www.modular.com/max). It supports functionality which is designed to transform _JAX computations_ into [MAX computation graphs](https://docs.modular.com/max). These graphs can then be executed using MAX.
 
