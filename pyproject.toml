@@ -31,7 +31,7 @@ max = ">=25.1.0.dev2025012205,<26"
 
 [tool.pixi.feature.test.tasks]
 test = "magic run kernels && pytest tests"
-coverage = "pytest --cov-branch --cov-report=xml"
+coverage = "pytest --cov-config=.coveragerc --cov=src --cov-report xml tests"
 
 [tool.pixi.feature.test.dependencies]
 pytest-cov = ">=6.0.0,<7"
