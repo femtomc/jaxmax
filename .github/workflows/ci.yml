@@ -13,16 +13,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-
-      - uses: fabasoad/setup-mojo-action@v1
-        with:
-          force: "false" 
-
-      - name: Install dependencies
-        run: magic install
-
+      - name: Install magic
+        run: curl -ssL https://magic.modular.com/deb1dd50-9fef-4d30-98ca-17cb32e01408 | bash
+      
       - name: Install kernels
         run: magic run kernels
 
