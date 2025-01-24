@@ -16,11 +16,11 @@ def jax_equality_assertion(fn, *args):
         else:
             return v
 
-    assert check(pytest.approx(jax.jit(fn)(*args), 1e-5) == jit(fn)(*args))
+    assert check(pytest.approx(jax.jit(fn)(*args), 1e-5) == jit(fn, coerces_to_jnp=True)(*args))
 
 
 def tire_kick_assertion(fn, *args):
-    assert jnp.any(jit(fn)(*args))
+    assert jnp.any(jit(fn, coerces_to_jnp=True)(*args))
 
 
 class TestCompiler:
@@ -38,3 +38,9 @@ class TestCompiler:
             return jnp.sin(v)
 
         jax_equality_assertion(jax_code, 5.0, 10.0)
+
+    def test_pjit(self):
+        def jax_code(x):
+            return x * jnp.linspace(x, 1, 100)
+
+        jax_equality_assertion(jax_code, 2.0)
