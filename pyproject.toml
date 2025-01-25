@@ -27,7 +27,7 @@ jax = ">=0.5.0, <0.6"
 kernels = "mojo package ./src/juju/kernels -o kernels.mojopkg"
 
 [tool.pixi.dependencies]
-max = ">=25.1.0.dev2025012205,<26"
+max = ">=25.1.0.dev2025012505,<26"
 
 [tool.pixi.feature.test.tasks]
 test = "magic run kernels && pytest tests"

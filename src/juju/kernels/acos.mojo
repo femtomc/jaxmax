@@ -1,7 +1,7 @@
 import compiler
 from math import acos
 from utils.index import IndexList
-from tensor_utils import ManagedTensorSlice, foreach
+from max.tensor import ManagedTensorSlice, foreach
 from runtime.asyncrt import MojoCallContextPtr
 
 

@@ -65,7 +65,7 @@ Let's examine a kernel, and imagine that we've placed this into a folder called 
 ```mojo title="kernels/add_one.mojo"
 import compiler
 from utils.index import IndexList
-from tensor_utils import ManagedTensorSlice, foreach
+from max.tensor import ManagedTensorSlice, foreach
 from runtime.asyncrt import MojoCallContextPtr
 
 
