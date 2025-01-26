@@ -4,13 +4,15 @@
 <img width="300px" src="./assets/good_juju.png"/>
 </p>
 
-`juju` is a bit of compiler middleware bridging JAX to the world of MAX graphs. It allows:
+`juju` is a bit of compiler middleware bridging (parts of) JAX to the world of MAX graphs. It allows:
 
-- users to write JAX programs, lower those programs to MAX graphs, and execute those graphs on MAX-supported hardware, including CPUs, GPUs, and (later on), xPUs (whatever MAX supports).
+- users to write JAX programs (see caveat below), lower those programs to MAX graphs, and execute those graphs on MAX-supported hardware, including CPUs, GPUs, and (later on), xPUs (whatever MAX supports).
 - users to extend the Python JAX language (the primitives that JAX exposes to write numerical programs) with custom MAX kernels.
 
 !!! danger "Danger, Will Robinson!"
-    This package is a proof-of-concept, and really early in development. Simple programs only for now! Tons of JAX primitives are missing lowering rules. It's not yet clear _how much of JAX_ will be fully supported (and how many extensions via MAX kernels will be added).
+    This package is a proof-of-concept, and very early in development. Simple programs only for now! It's not yet clear _how much of JAX_ will be fully supported (and how many extensions via MAX kernels will be added).
+    
+    JAX is a massive project, with tons of functionality! It's unlikely that this package will ever support _all of JAX_ (all JAX primitives, and device semantics). The goal is to support enough JAX to be dangerous, and to provide ways to easily extend the functionality of this package to support e.g. more of JAX, or to plug your own custom operations to define your own JAX-like language with compilation to MAX.
 
 **Example:**
 
