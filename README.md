@@ -7,10 +7,12 @@
 
 [![][jax_badge]](https://github.com/google/jax) [![](https://img.shields.io/badge/docs-stable-blue.svg?style=flat-square)](https://femtomc.github.io/juju) [![codecov](https://codecov.io/gh/femtomc/juju/graph/badge.svg?token=XOWC059QA9)](https://codecov.io/gh/femtomc/juju)
 
-`juju` is a compiler from [JAX](https://github.com/jax-ml/jax) to [MAX](https://www.modular.com/max). It supports functionality which is designed to transform _JAX computations_ into [MAX computation graphs](https://docs.modular.com/max). These graphs can then be executed using MAX.
+`juju` is an extensible compiler from [JAX](https://github.com/jax-ml/jax) to [MAX](https://www.modular.com/max). It supports functionality which is designed to transform _JAX computations_ (Jaxprs) into [MAX computation graphs](https://docs.modular.com/max). These graphs can then be executed using MAX.
+
+**JAX is a massive project, with tons of functionality -- it's unlikely that this package will ever support _all of JAX_ (all JAX primitives, and device semantics). The goal is to support enough JAX to be dangerous, and to provide ways to easily extend the functionality of this package to support e.g. more of JAX, or to plug your own custom operations to define your own JAX-like language.**
 
 > [!CAUTION]
-> This package is a proof-of-concept, and likely has sharp edges. Simple programs only for now! Tons of JAX primitives are missing lowering rules. It's not yet clear _how much of JAX_ will be fully supported (and how many extensions via MAX kernels will be added).
+> This package is a proof-of-concept, and likely has sharp edges. Simple programs only for now! Tons of JAX primitives are missing lowering rules. 
 
 **Example:**
 ```python
