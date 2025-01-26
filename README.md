@@ -32,9 +32,9 @@ print(jax_code(5, 10).to_numpy()) # -0.93009484
 The compiler works as follows:
 - First, the computation is first staged to a `Jaxpr`
 - Then, an interpreter is run. The interpreter traverses the `Jaxpr`, and replaces JAX primitives (like `jax.lax.add_p`) with ones from [MAX's operation set](https://docs.modular.com/max/api/mojo/graph/ops/) to produce a MAX graph.
-- The MAX graph can be loaded into a MAX execution engine (a `InferenceSession`) and executed.
+- The MAX graph can be loaded into a MAX execution engine (an `InferenceSession`) and executed.
 
-In theory, one could define the functionality that we've all come to know and love from JAX, using MAX as a backend in place of XLA.
+In theory, one could recover some of the functionality that we've all come to know and love from JAX, using MAX as a backend in place of XLA.
 
 > [!WARNING]
 > You can't invoke MAX computations _within a JAX computation which you `jax.jit`_ yet. In other words, you can't mix and max XLA and MAX in this package yet, and it's not clear if this will ever work.
