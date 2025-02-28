@@ -30,6 +30,9 @@ class TestCompiler:
     def test_neg_p(self):
         jax_equality_assertion(lambda x: -x, 5.0)
 
+    def test_reduce_sum_p(self):
+        jax_equality_assertion(lambda x: jnp.sum(x), jnp.ones(10))
+
     def test_grad(self):
         @grad
         def jax_code(x, y):

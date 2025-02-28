@@ -97,7 +97,10 @@ def integer_pow(x, y, **params):
 
 @max_rules.register_def(primitives.reduce_sum_p)
 def reduce_sum(x, **params):
-    raise NotImplementedError("TODO")
+    axes = params["axes"]
+    assert len(axes) == 1, "Only a single axis is currently allowed."
+    (axis,) = axes
+    return ops.sum(x, axis=axis)
 
 
 @max_rules.register_def(primitives.neg_p)
