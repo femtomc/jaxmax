@@ -14,31 +14,28 @@
 import compiler
 from utils.index import IndexList
 from max.tensor import ManagedTensorSlice, foreach
-from runtime.asyncrt import MojoCallContextPtr
+from runtime.asyncrt import DeviceContextPtr
 
 
 @compiler.register("add_one", num_dps_outputs=1)
 struct AddOne:
     @staticmethod
     fn execute[
-        # Parameter that if true, runs kernel synchronously in runtime
-        synchronous: Bool,
-        # e.g. "CUDA" or "CPU"
         target: StringLiteral,
     ](
         # as num_dps_outputs=1, the first argument is the "output"
         out: ManagedTensorSlice,
         # starting here are the list of inputs
-        x: ManagedTensorSlice[out.type, out.rank],
+        x: ManagedTensorSlice[type = out.type, rank = out.rank],
         # the context is needed for some GPU calls
-        ctx: MojoCallContextPtr,
+        ctx: DeviceContextPtr,
     ):
         @parameter
         @always_inline
         fn func[width: Int](idx: IndexList[x.rank]) -> SIMD[x.type, width]:
             return x.load[width](idx) + 1
 
-        foreach[func, synchronous, target](out, ctx)
+        foreach[func, target=target](out, ctx)
 
     # You only need to implement this if you do not manually annotate
     # output shapes in the graph.

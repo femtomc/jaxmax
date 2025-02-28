@@ -16,7 +16,7 @@ from complex import ComplexSIMD
 from math import iota
 from utils.index import IndexList
 from max.tensor import ManagedTensorSlice, foreach
-from runtime.asyncrt import MojoCallContextPtr
+from runtime.asyncrt import DeviceContextPtr
 
 
 @always_inline
@@ -47,9 +47,6 @@ alias float_dtype = DType.float32
 struct Mandelbrot:
     @staticmethod
     fn execute[
-        # Parameter that if true, runs kernel synchronously in runtime
-        synchronous: Bool,
-        # e.g. "CUDA" or "CPU"
         target: StringLiteral,
     ](
         # as num_dps_outputs=1, the first argument is the "output"
@@ -61,7 +58,7 @@ struct Mandelbrot:
         scale_y: Float32,
         max_iterations: Int32,
         # the context is needed for some GPU calls
-        ctx: MojoCallContextPtr,
+        ctx: DeviceContextPtr,
     ):
         @parameter
         @always_inline
@@ -79,7 +76,7 @@ struct Mandelbrot:
                 c, max_iterations.cast[out.type]()
             )
 
-        foreach[func, synchronous, target](out, ctx)
+        foreach[func, target=target](out, ctx)
 
     # You only need to implement this if you do not manually annotate
     # output shapes in the graph.

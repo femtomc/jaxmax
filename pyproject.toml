@@ -20,14 +20,14 @@ preview = ["pixi-build"]
 
 [tool.pixi.pypi-dependencies]
 juju = { path = ".", editable = true }
-beartype = ">=0.19.0, <0.20"
-jax = ">=0.5.0, <0.6"
+beartype = ">=0.20.0, <0.21"
+jax = ">=0.5.1, <0.6"
 
 [tool.pixi.tasks]
 kernels = "mojo package ./src/juju/kernels -o kernels.mojopkg"
 
 [tool.pixi.dependencies]
-max = ">=25.1.0.dev2025012605,<26"
+max = ">=25.2.0.dev2025022805,<26"
 
 [tool.pixi.feature.test.tasks]
 test = "magic run kernels && pytest tests"
